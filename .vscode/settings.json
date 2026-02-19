@@ -1,0 +1,6 @@
+{
+	"files.associations": {
+		"*.css": "tailwindcss"
+	},
+	"html.customData": ["./node_modules/@designsystem-se/af/custom-elements.json"]
+}
