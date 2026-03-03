@@ -28,6 +28,7 @@
 			af-button-text="Knapptext"
 			af-value={data.query}
 			onafOnSubmitSearch={handleSubmitSearch}
+			class="bg-red-500"
 		>
 		</digi-form-input-search>
 	</div>
