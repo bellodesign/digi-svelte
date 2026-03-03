@@ -15,7 +15,7 @@
 	<meta name="description" content="På den här sidan kan man testa sök..." />
 </svelte:head>
 
-<digi-layout-block af-vertical-padding="true">
+<digi-layout-block af-vertical-padding={true}>
 	<digi-typography-heading-jumbo af-text="Sök jobb"></digi-typography-heading-jumbo>
 
 	<div class="grid grid-cols-12 gap-4">
@@ -31,7 +31,7 @@
 		</digi-form-input-search>
 	</div>
 </digi-layout-block>
-<digi-layout-block af-vertical-padding="true" af-variation="secondary">
+<digi-layout-block af-vertical-padding={true} af-variation="secondary">
 	{#if data.jobs.length === 0 && data.query}
 		<p class="py-4">Inga jobb hittades</p>
 	{/if}
@@ -56,8 +56,6 @@
 					</p>
 					<digi-expandable-accordion
 						af-heading="Beskrivning"
-						af-button-aria-label={`Visa mer om jobbet ${job.headline}`}
-						af-content-aria-label={`Mer information om jobbet ${job.headline}`}
 					>
 						<p>{@html job.description.text_formatted}</p>
 					</digi-expandable-accordion>

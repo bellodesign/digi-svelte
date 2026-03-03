@@ -4,14 +4,14 @@
 	import { SITE_NAME } from '$lib/constants';
 </script>
 
-<digi-header af-system-name={SITE_NAME} af-hide-system-name="false" af-menu-button-text="Meny">
+<digi-header af-system-name={SITE_NAME} af-hide-system-name={false} af-menu-button-text="Meny">
 	<a slot="header-logo" aria-label="Designsystemets startsida" href={resolve('/')}></a>
 	<div slot="header-content">
 		<digi-header-avatar
 			af-name="Linda Karlsson"
 			af-signature="KALIA"
-			af-hide-signature="true"
-			af-show-placeholder-image="true"
+			af-hide-signature={true}
+			af-show-placeholder-image={true}
 		></digi-header-avatar>
 	</div>
 
