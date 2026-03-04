@@ -1,22 +1,4 @@
-# sv
-
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project
-npx sv create my-app
-```
-
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-npx sv create --template demo --types ts --add prettier eslint tailwindcss="plugins:typography" --install npm digi-svelte
-```
+# Digi-Svelte
 
 ## Developing
 
@@ -40,3 +22,28 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+
+## Merging from a colleague fork
+
+If a colleague has changes in a fork, you can merge them into this repository with a temporary remote:
+
+```sh
+# add fork as a temporary remote
+git remote add oliie https://github.com/oliie/digi-svelte.git
+
+# fetch fork branches
+git fetch oliie --prune
+
+# merge fork main into your current main
+git checkout main
+git merge oliie/main
+
+# push merged result
+git push origin main
+```
+
+When you are done, remove the temporary remote:
+
+```sh
+git remote remove oliie
+```
