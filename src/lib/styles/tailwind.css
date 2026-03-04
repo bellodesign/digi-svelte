@@ -1,7 +1,5 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
-/*@layer theme {
+/* @layer theme {
 	.dark {	}
-}*/
-
-
+} */

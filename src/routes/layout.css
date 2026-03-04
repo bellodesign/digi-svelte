@@ -1,12 +1,11 @@
 @import 'tailwindcss';
-@plugin '@tailwindcss/typography';
 
-@import '$lib/styles/tailwind-digi-theme.css';
-@import '$lib/styles/tailwind.css';
+@plugin '@tailwindcss/typography';
 
 @import '@designsystem-se/af/dist/digi-arbetsformedlingen/digi-arbetsformedlingen.css';
 @import '@designsystem-se/af/dist/digi-arbetsformedlingen/fonts/src/fonts.css';
-@import '../lib/styles/tailwind-digi-theme.css';
+@import '$lib/styles/tailwind-digi-theme.css';
+@import '$lib/styles/tailwind.css';
 
 @layer theme {
 	.dark {
@@ -19,6 +18,7 @@
 	html,
 	body {
 		@apply bg-background-primary text-text-primary;
+
 		font-family: 'Open Sans', sans-serif;
 	}
 }

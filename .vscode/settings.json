@@ -2,5 +2,10 @@
 	"files.associations": {
 		"*.css": "tailwindcss"
 	},
-	"html.customData": ["./node_modules/@designsystem-se/af/custom-elements.json"]
+	"html.customData": ["./node_modules/@designsystem-se/af/custom-elements.json"],
+	"stylelint.validate": ["css", "tailwindcss"],
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit",
+		"source.fixAll.stylelint": "explicit"
+	}
 }
