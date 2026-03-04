@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import { ModeWatcher, toggleMode } from 'mode-watcher';
 	import './layout.css';
 
 	import { defineCustomElements } from '@designsystem-se/af/loader';
@@ -11,18 +12,16 @@
 	let { children } = $props();
 </script>
 
+<ModeWatcher />
+
+<p>Lite text o grejer</p>
+
+<digi-button onafOnClick={toggleMode}> Toggla tema </digi-button>
+
 <digi-typography>
-	<div class="app">
+	<div class="row-span-1 grid min-h-dvh">
 		<Header />
 		<main>{@render children()}</main>
 		<Footer />
 	</div>
 </digi-typography>
-
-<style>
-	.app {
-		display: grid;
-		grid-template-rows: auto 1fr auto;
-		min-height: 100vh;
-	}
-</style>

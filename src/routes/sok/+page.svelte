@@ -15,8 +15,6 @@
 	<meta name="description" content="På den här sidan kan man testa sök..." />
 </svelte:head>
 
-<digi-button af-variation="primary">TEST</digi-button>
-
 <digi-layout-block af-vertical-padding={true}>
 	<digi-typography-heading-jumbo af-text="Sök jobb"></digi-typography-heading-jumbo>
 
@@ -28,7 +26,6 @@
 			af-button-text="Knapptext"
 			af-value={data.query}
 			onafOnSubmitSearch={handleSubmitSearch}
-			class="bg-red-500"
 		>
 		</digi-form-input-search>
 	</div>
