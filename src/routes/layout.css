@@ -6,3 +6,19 @@
 
 @import '@designsystem-se/af/dist/digi-arbetsformedlingen/digi-arbetsformedlingen.css';
 @import '@designsystem-se/af/dist/digi-arbetsformedlingen/fonts/src/fonts.css';
+@import '../lib/styles/tailwind-digi-theme.css';
+
+@layer theme {
+	.dark {
+		--color-background-primary: var(--digi--color--text--primary);
+		--color-text-primary: var(--digi--color--background--primary);
+	}
+}
+
+@layer components {
+	html,
+	body {
+		@apply bg-background-primary text-text-primary;
+		font-family: 'Open Sans', sans-serif;
+	}
+}

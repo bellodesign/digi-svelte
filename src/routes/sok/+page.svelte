@@ -26,7 +26,6 @@
 			af-button-text="Knapptext"
 			af-value={data.query}
 			onafOnSubmitSearch={handleSubmitSearch}
-			class="col-span-8"
 		>
 		</digi-form-input-search>
 	</div>
@@ -36,7 +35,7 @@
 		<p class="py-4">Inga jobb hittades</p>
 	{/if}
 	{#if data.jobs.length > 0}
-		<p class="search-result-info py-4">
+		<p class="py-4 text-(--digi--typography--heading-2--font-size--desktop)">
 			Visar <strong>{data.jobs.length} jobb</strong> av {data.total} totalt
 		</p>
 	{/if}
@@ -44,19 +43,17 @@
 	<div class="result grid grid-cols-12 gap-4">
 		<div class="col-span-8 flex flex-col gap-4">
 			{#each data.jobs as job (job.id)}
-				<div class="job bg-white p-6">
-					<h2>{job.headline}</h2>
+				<div class="bg-white p-6">
+					<h2 class="mb-(--digi--padding--smaller)">{job.headline}</h2>
 					<p>{job.workplace_address.municipality} | {job.occupation_group.label}</p>
 					<p>
-						{job.employer.name} | {#if job.application_details.url}
+						{job.employer.name} | {#if job.application_details.url}
 							<digi-link-external af-href={job.application_details.url} af-target="_blank"
 								>Ansök på {job.employer.name}</digi-link-external
 							>
 						{/if}
 					</p>
-					<digi-expandable-accordion
-						af-heading="Beskrivning"
-					>
+					<digi-expandable-accordion af-heading="Beskrivning">
 						<p>{@html job.description.text_formatted}</p>
 					</digi-expandable-accordion>
 				</div>
@@ -64,13 +61,3 @@
 		</div>
 	</div>
 </digi-layout-block>
-
-<style>
-	.search-result-info {
-		font-size: var(--digi--typography--heading-2--font-size--desktop);
-	}
-
-	.job h2 {
-		margin-bottom: var(--digi--padding--smaller);
-	}
-</style>

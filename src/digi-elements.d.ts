@@ -16,7 +16,7 @@ type LowercaseFirst<S extends string> = S extends `${infer F}${infer R}` ? `${Lo
 
 type DigiProps<T> = {
 	[K in keyof T as K extends `on${infer E}` ? `on${LowercaseFirst<E>}` : CamelToKebab<string & K>]?: DigiPropValue<T[K]>;
-};
+} & { class?: string };
 
 declare module 'svelte/elements' {
 	interface SvelteHTMLElements {
