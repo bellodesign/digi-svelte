@@ -27,7 +27,6 @@ declare module 'svelte/elements' {
 		'digi-calendar': DigiProps<JSX.IntrinsicElements['digi-calendar']>;
 		'digi-calendar-datepicker': DigiProps<JSX.IntrinsicElements['digi-calendar-datepicker']>;
 		'digi-calendar-week-view': DigiProps<JSX.IntrinsicElements['digi-calendar-week-view']>;
-		'digi-card': DigiProps<JSX.IntrinsicElements['digi-card']>;
 		'digi-chart-line': DigiProps<JSX.IntrinsicElements['digi-chart-line']>;
 		'digi-code': DigiProps<JSX.IntrinsicElements['digi-code']>;
 		'digi-code-block': DigiProps<JSX.IntrinsicElements['digi-code-block']>;
@@ -60,7 +59,6 @@ declare module 'svelte/elements' {
 		'digi-header-navigation': DigiProps<JSX.IntrinsicElements['digi-header-navigation']>;
 		'digi-header-navigation-item': DigiProps<JSX.IntrinsicElements['digi-header-navigation-item']>;
 		'digi-header-notification': DigiProps<JSX.IntrinsicElements['digi-header-notification']>;
-		'digi-icon': DigiProps<JSX.IntrinsicElements['digi-icon']>;
 		'digi-icon-accessibility-deaf': DigiProps<JSX.IntrinsicElements['digi-icon-accessibility-deaf']>;
 		'digi-icon-accessibility-universal': DigiProps<JSX.IntrinsicElements['digi-icon-accessibility-universal']>;
 		'digi-icon-apple': DigiProps<JSX.IntrinsicElements['digi-icon-apple']>;
@@ -270,8 +268,6 @@ declare module 'svelte/elements' {
 		'digi-media-figure': DigiProps<JSX.IntrinsicElements['digi-media-figure']>;
 		'digi-media-image': DigiProps<JSX.IntrinsicElements['digi-media-image']>;
 		'digi-navigation-breadcrumbs': DigiProps<JSX.IntrinsicElements['digi-navigation-breadcrumbs']>;
-		'digi-navigation-context-menu': DigiProps<JSX.IntrinsicElements['digi-navigation-context-menu']>;
-		'digi-navigation-context-menu-item': DigiProps<JSX.IntrinsicElements['digi-navigation-context-menu-item']>;
 		'digi-navigation-pagination': DigiProps<JSX.IntrinsicElements['digi-navigation-pagination']>;
 		'digi-navigation-sidebar': DigiProps<JSX.IntrinsicElements['digi-navigation-sidebar']>;
 		'digi-navigation-sidebar-button': DigiProps<JSX.IntrinsicElements['digi-navigation-sidebar-button']>;
@@ -293,7 +289,7 @@ declare module 'svelte/elements' {
 		'digi-tools-feedback': DigiProps<JSX.IntrinsicElements['digi-tools-feedback']>;
 		'digi-tools-feedback-banner': DigiProps<JSX.IntrinsicElements['digi-tools-feedback-banner']>;
 		'digi-tools-feedback-rating': DigiProps<JSX.IntrinsicElements['digi-tools-feedback-rating']>;
-		'digi-tools-languagepicker': DigiProps<JSX.IntrinsicElements['digi-tools-languagepicker']>;
+		'digi-tools-theme-provider': DigiProps<JSX.IntrinsicElements['digi-tools-theme-provider']>;
 		'digi-typography': DigiProps<JSX.IntrinsicElements['digi-typography']>;
 		'digi-typography-heading-jumbo': DigiProps<JSX.IntrinsicElements['digi-typography-heading-jumbo']>;
 		'digi-typography-meta': DigiProps<JSX.IntrinsicElements['digi-typography-meta']>;
