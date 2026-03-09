@@ -112,12 +112,12 @@
 		</p>
 		<digi-code-block af-code={tokenJsonCode} af-language="javascript"></digi-code-block>
 		<h3>Varför detta är rätt tillvägagångssätt</h3>
-		<digi-list>
+		<ul>
 			<li>Designsystemteamet behåller kontroll över vad som exponeras</li>
 			<li>Minskar mängden klasser — endast meningsfulla tokens inkluderas</li>
 			<li>Självdokumenterande — taggen signalerar avsikt för framtida förvaltare</li>
 			<li>En tumregel: tagga en token om en utvecklare skulle använda den som fristående klass</li>
-		</digi-list>
+		</ul>
 	</digi-layout-block>
 
 	<digi-layout-block af-vertical-padding={true}>
@@ -127,14 +127,14 @@
 			och att optimera för DX (utvecklarupplevelsen).
 		</p>
 		<h3>Behåll identiska namn (rekommenderat)</h3>
-		<digi-list>
+		<ul>
 			<li>
 				Ingen kognitiv overhead — <code>bg-background-brand-primary</code>
 				matchar dokumentationen exakt
 			</li>
 			<li>Ingen risk för förvirring mellan klassnamn och dokumenterade tokennamn</li>
 			<li>Skriptet förblir enkelt och mekaniskt utan mappningslogik</li>
-		</digi-list>
+		</ul>
 		<h3>Tillåt alias (valfri utökning)</h3>
 		<p>
 			Ett <code>tailwindAlias</code>
@@ -166,7 +166,7 @@
 			utifrån digi-styles token-JSON och ska aldrig redigeras manuellt.
 		</p>
 		<h3>Rekommendationer</h3>
-		<digi-list>
+		<ul>
 			<li>Kör skriptet i CI så att filen hålls synkroniserad när digi-styles får nya tokens</li>
 			<li>Checka in den genererade filen i repot så att den är tillgänglig utan ett byggsteg</li>
 			<li>Lägg till en checksumma eller hash-kommentar överst för att enkelt upptäcka avdrift</li>
@@ -174,7 +174,7 @@
 				Låt CI misslyckas om genererad utdata skiljer sig från incheckad fil — likt en
 				lockfile-kontroll
 			</li>
-		</digi-list>
+		</ul>
 	</digi-layout-block>
 
 	<digi-layout-block af-vertical-padding={true}>
@@ -183,20 +183,20 @@
 			<code>@theme</code>
 			är en Tailwind v4-exklusiv funktion och fungerar inte i v3. npm-paketet bör:
 		</p>
-		<digi-list>
+		<ul>
 			<li>
 				Deklarera <code>tailwindcss &gt;= 4.0.0</code>
 				som peer dependency
 			</li>
 			<li>Dokumentera detta tydligt i README</li>
 			<li>Överväga att lägga till ett tydligt felmeddelande vid användning med v3</li>
-		</digi-list>
+		</ul>
 	</digi-layout-block>
 
 	<digi-layout-block af-vertical-padding={true}>
 		<h2>7. Sammanfattning och nästa steg</h2>
 		<h3>Vad som ska byggas</h3>
-		<digi-list>
+		<ul>
 			<li>
 				Lägg till ett <code>tailwind</code>
 				-fält (booleskt eller typad sträng) i token-schemat
@@ -214,9 +214,9 @@
 				-filen som en del av digi-styles npm-paketet
 			</li>
 			<li>Lägg till en CI-kontroll för att hålla den genererade filen synkroniserad</li>
-		</digi-list>
+		</ul>
 		<h3>Vad som ska dokumenteras</h3>
-		<digi-list>
+		<ul>
 			<li>Vilka tokens som taggats och varför — etablera tydliga kriterier</li>
 			<li>Aliasmappningar om alias införs</li>
 			<li>Kravet på Tailwind v4 som peer dependency</li>
@@ -224,6 +224,12 @@
 				Hur man importerar <code>@theme</code>
 				-filen i ett projekt
 			</li>
-		</digi-list>
+		</ul>
 	</digi-layout-block>
 </section>
+
+<style>
+	ul > li {
+		list-style: disc;
+	} 
+</style>

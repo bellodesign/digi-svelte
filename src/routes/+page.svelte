@@ -1,75 +1,84 @@
 <script lang="ts">
 	import SvelteLogo from '$lib/images/svelte-logo.svg';
+	import { SITE_NAME } from '$lib/constants';
 </script>
 
 <svelte:head>
 	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<meta name="description" content={SITE_NAME} />
 </svelte:head>
 
 <section>
 	<digi-layout-block af-vertical-padding={true}>
 		<digi-typography-heading-jumbo af-text="Digi i Svelte"></digi-typography-heading-jumbo>
-	</digi-layout-block>
-	<digi-layout-block af-vertical-padding={true}>
+		<digi-typography-preamble>
+			En POC för att utvärdera integrationen av Digi-komponenter i Svelte.
+		</digi-typography-preamble>
 		<div class="flex items-center gap-8">
 			<digi-logo></digi-logo>
-			<img src={SvelteLogo} alt="Svelte logo" width="120" height="120" />
+			<img src={SvelteLogo} alt="Svelte logo" width="80" height="80" />
 		</div>
 	</digi-layout-block>
 
 	<digi-layout-block af-vertical-padding={true}>
-		<div class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-8">
-			<div class="flex flex-col">
-				<h2>Knappar</h2>
-				<div class="flex flex-wrap gap-4">
-					<digi-button>Primär</digi-button>
-					<digi-button af-variation="secondary">Sekundär</digi-button>
-					<digi-button af-variation="tertiary">Tertiär</digi-button>
-				</div>
-			</div>
-			<div class="flex flex-col">
-				<h2>Tailwind-exempel</h2>
-				<p>Färger - bakgrund, ramlinje. Radius. Intellisense inkluderar digi.</p>
-				<div class="flex gap-4">
-					<div
-						class="h-12 w-12 rounded-tertiary border border-border-accent-primary bg-background-primary"
-					></div>
-					<div
-						class="h-12 w-12 rounded-tertiary border border-border-accent-primary bg-background-secondary"
-					></div>
-				</div>
-			</div>
-		</div>
-	</digi-layout-block>
-
-	<digi-layout-block af-vertical-padding={true}>
-		<h2>Tailwind @apply + digi spacings</h2>
+		<h2>Varför Svelte?</h2>
 		<p>
-			@apply inuti style-block i svelte kräver att man använder @reference för att undvika
-			duplicering av klasser.
+			Digi-komponenterna är byggda med Stencil som web components och går att använda i Svelte utan större problem.
 		</p>
-		<p>Exempel på spacing</p>
-		<div class="spacing-row">
-			<div class="spacing-bar pr-largest"></div>
-			<div class="spacing-bar pr-larger"></div>
-			<div class="spacing-bar pr-large"></div>
-			<div class="spacing-bar pr-base"></div>
-			<div class="spacing-bar pr-small"></div>
-			<div class="spacing-bar pr-smaller"></div>
-			<div class="spacing-bar pr-smallest"></div>
-		</div>
+		<ul>
+			<li>Enklare att rekrytera för och onboarda nya utvecklare på</li>
+			<li>Mindre boilerplate ger snabbare leverans</li>
+			<li>
+				Lägre inlärningströskel jämfört med Angular utan att tappa designsystemets värde
+			</li>
+			<li>
+				Web components-arkitekturen i Digi är designad för ramverksoberoende — vi utnyttjar det som
+				det är tänkt
+			</li>
+		</ul>
+
+		<h3>Tekniskt</h3>
+		<ul>
+			<li>
+				Läs in <code>defineCustomElements()</code> i root <code>+layout.svelte</code>
+			</li>
+			<li>Inaktivera SSR tills Digi har stöd för det</li>
+			<li>Events fungerar med Sveltes syntax direkt (bevisat i denna POC)</li>
+			<li>
+				TypeScript-typer genereras automatiskt från Digi-paketet via skript — inget manuellt underhåll
+			</li>
+			<li>
+				Tailwind v4-integration fungerar via <code>@theme</code> med digi-tokens — team som vill
+				använda Tailwind för layout och grid har en klar väg framåt
+			</li>
+			<li>
+				Formulärkomponenter fungerar med validering och felhantering (bevisat i denna POC)
+			</li>
+		</ul>
+
+		<h3>Fördelar</h3>
+		<ul>
+			<li>Enkelt att komma igång</li>
+			<li>Digi-teamet äger och förvaltar fortfarande allt</li>
+			<li>Automatisk uppdatering när Digi släpper nya versioner</li>
+			<li>Ingen risk för divergens mot designsystemet</li>
+		</ul>
+
+		<h3>Risker</h3>
+		<ul>
+			<li>SSR-begränsningen finns kvar tills vidare</li>
+			<li>Händer det något med Digi-paketet påverkas ni direkt</li>
+			<li>
+				Events från web components har ibland quirks — hanterbara men kräver kännedom om hur
+				Stencil emittar events
+			</li>
+		</ul>
 	</digi-layout-block>
+
 </section>
 
-<style lang="postcss">
-	@reference "./layout.css";
-
-	.spacing-row {
-		@apply flex items-center gap-small;
-	}
-
-	.spacing-bar {
-		@apply h-base rounded-tertiary bg-background-interactive-default-primary;
-	}
+<style>
+	ul > li {
+		list-style: disc;
+	} 
 </style>

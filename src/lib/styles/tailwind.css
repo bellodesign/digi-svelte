@@ -1,3 +1,9 @@
+@import 'tailwindcss';
+
+@plugin '@tailwindcss/typography';
+
+@import './tailwind-digi.css';
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* @layer theme {

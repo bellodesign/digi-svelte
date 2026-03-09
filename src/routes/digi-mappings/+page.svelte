@@ -399,7 +399,7 @@
 </section>
 
 <style lang="postcss">
-	@reference '../layout.css';
+	@reference '$lib/styles/tailwind.css';
 
 	.count {
 		@apply text-sm font-normal;
