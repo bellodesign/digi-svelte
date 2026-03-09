@@ -38,13 +38,19 @@
 		<div>
 			<digi-footer-card af-type="border">
 				<a href={resolve('/')}>Om tjänsten {SITE_NAME}</a>
-				<p>Systemversion: 1.4.0 <br /> Ansvarig: Jenny Svensson</p>
+				<p>
+					Systemversion: 1.4.0 <br />
+					 Ansvarig: Jenny Svensson
+				</p>
 			</digi-footer-card>
 		</div>
 		<div>
 			<digi-footer-card af-type="border">
 				<a href={resolve('/')}>Kontakta servicedesk</a>
-				<p>Telefon: 0771-60 0001 <br /> Öppettider: Vardagar 08:00-16:30</p>
+				<p>
+					Telefon: 0771-60 0001 <br />
+					 Öppettider: Vardagar 08:00-16:30
+				</p>
 			</digi-footer-card>
 		</div>
 	</div>

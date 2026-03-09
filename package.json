@@ -13,6 +13,7 @@
 		"lint": "prettier --check . && eslint . && stylelint \"**/*.css\"",
 		"lint:css": "stylelint \"**/*.css\"",
 		"format": "prettier --write .",
+		"generate:types": "node scripts/generate-digi-types.js",
 		"generate:theme": "node scripts/generate-tailwind-theme.js"
 	},
 	"devDependencies": {

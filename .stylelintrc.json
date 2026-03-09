@@ -12,5 +12,5 @@
 		"no-invalid-position-at-import-rule": null,
 		"custom-property-pattern": null
 	},
-	"ignoreFiles": ["src/lib/styles/tailwind-digi-theme.css", "node_modules/**"]
+	"ignoreFiles": ["src/lib/styles/tailwind-digi.css", "node_modules/**"]
 }

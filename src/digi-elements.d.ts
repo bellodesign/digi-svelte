@@ -12,10 +12,14 @@ type CamelToKebab<S extends string> = S extends `${infer F}${infer R}`
 
 type DigiPropValue<T> = T extends boolean ? T : T extends string | number | bigint ? `${T}` : T;
 
-type LowercaseFirst<S extends string> = S extends `${infer F}${infer R}` ? `${Lowercase<F>}${R}` : S;
+type LowercaseFirst<S extends string> = S extends `${infer F}${infer R}`
+	? `${Lowercase<F>}${R}`
+	: S;
 
 type DigiProps<T> = {
-	[K in keyof T as K extends `on${infer E}` ? `on${LowercaseFirst<E>}` : CamelToKebab<string & K>]?: DigiPropValue<T[K]>;
+	[K in keyof T as K extends `on${infer E}`
+		? `on${LowercaseFirst<E>}`
+		: CamelToKebab<string & K>]?: DigiPropValue<T[K]>;
 } & { class?: string };
 
 declare module 'svelte/elements' {
@@ -53,14 +57,20 @@ declare module 'svelte/elements' {
 		'digi-form-select': DigiProps<JSX.IntrinsicElements['digi-form-select']>;
 		'digi-form-select-filter': DigiProps<JSX.IntrinsicElements['digi-form-select-filter']>;
 		'digi-form-textarea': DigiProps<JSX.IntrinsicElements['digi-form-textarea']>;
-		'digi-form-validation-message': DigiProps<JSX.IntrinsicElements['digi-form-validation-message']>;
+		'digi-form-validation-message': DigiProps<
+			JSX.IntrinsicElements['digi-form-validation-message']
+		>;
 		'digi-header': DigiProps<JSX.IntrinsicElements['digi-header']>;
 		'digi-header-avatar': DigiProps<JSX.IntrinsicElements['digi-header-avatar']>;
 		'digi-header-navigation': DigiProps<JSX.IntrinsicElements['digi-header-navigation']>;
 		'digi-header-navigation-item': DigiProps<JSX.IntrinsicElements['digi-header-navigation-item']>;
 		'digi-header-notification': DigiProps<JSX.IntrinsicElements['digi-header-notification']>;
-		'digi-icon-accessibility-deaf': DigiProps<JSX.IntrinsicElements['digi-icon-accessibility-deaf']>;
-		'digi-icon-accessibility-universal': DigiProps<JSX.IntrinsicElements['digi-icon-accessibility-universal']>;
+		'digi-icon-accessibility-deaf': DigiProps<
+			JSX.IntrinsicElements['digi-icon-accessibility-deaf']
+		>;
+		'digi-icon-accessibility-universal': DigiProps<
+			JSX.IntrinsicElements['digi-icon-accessibility-universal']
+		>;
 		'digi-icon-apple': DigiProps<JSX.IntrinsicElements['digi-icon-apple']>;
 		'digi-icon-archive': DigiProps<JSX.IntrinsicElements['digi-icon-archive']>;
 		'digi-icon-archive-outline': DigiProps<JSX.IntrinsicElements['digi-icon-archive-outline']>;
@@ -86,8 +96,12 @@ declare module 'svelte/elements' {
 		'digi-icon-calculator-solid': DigiProps<JSX.IntrinsicElements['digi-icon-calculator-solid']>;
 		'digi-icon-calendar': DigiProps<JSX.IntrinsicElements['digi-icon-calendar']>;
 		'digi-icon-calendar-alt': DigiProps<JSX.IntrinsicElements['digi-icon-calendar-alt']>;
-		'digi-icon-calendar-alt-alert': DigiProps<JSX.IntrinsicElements['digi-icon-calendar-alt-alert']>;
-		'digi-icon-caret-circle-right': DigiProps<JSX.IntrinsicElements['digi-icon-caret-circle-right']>;
+		'digi-icon-calendar-alt-alert': DigiProps<
+			JSX.IntrinsicElements['digi-icon-calendar-alt-alert']
+		>;
+		'digi-icon-caret-circle-right': DigiProps<
+			JSX.IntrinsicElements['digi-icon-caret-circle-right']
+		>;
 		'digi-icon-caret-down': DigiProps<JSX.IntrinsicElements['digi-icon-caret-down']>;
 		'digi-icon-caret-left': DigiProps<JSX.IntrinsicElements['digi-icon-caret-left']>;
 		'digi-icon-caret-right': DigiProps<JSX.IntrinsicElements['digi-icon-caret-right']>;
@@ -95,19 +109,27 @@ declare module 'svelte/elements' {
 		'digi-icon-chart': DigiProps<JSX.IntrinsicElements['digi-icon-chart']>;
 		'digi-icon-chat': DigiProps<JSX.IntrinsicElements['digi-icon-chat']>;
 		'digi-icon-check': DigiProps<JSX.IntrinsicElements['digi-icon-check']>;
-		'digi-icon-check-circle-reg-alt': DigiProps<JSX.IntrinsicElements['digi-icon-check-circle-reg-alt']>;
-		'digi-icon-check-circle-solid': DigiProps<JSX.IntrinsicElements['digi-icon-check-circle-solid']>;
+		'digi-icon-check-circle-reg-alt': DigiProps<
+			JSX.IntrinsicElements['digi-icon-check-circle-reg-alt']
+		>;
+		'digi-icon-check-circle-solid': DigiProps<
+			JSX.IntrinsicElements['digi-icon-check-circle-solid']
+		>;
 		'digi-icon-checklist': DigiProps<JSX.IntrinsicElements['digi-icon-checklist']>;
 		'digi-icon-chevron-down': DigiProps<JSX.IntrinsicElements['digi-icon-chevron-down']>;
 		'digi-icon-chevron-left': DigiProps<JSX.IntrinsicElements['digi-icon-chevron-left']>;
 		'digi-icon-chevron-right': DigiProps<JSX.IntrinsicElements['digi-icon-chevron-right']>;
 		'digi-icon-chevron-up': DigiProps<JSX.IntrinsicElements['digi-icon-chevron-up']>;
 		'digi-icon-clock': DigiProps<JSX.IntrinsicElements['digi-icon-clock']>;
-		'digi-icon-communication-play-solid': DigiProps<JSX.IntrinsicElements['digi-icon-communication-play-solid']>;
+		'digi-icon-communication-play-solid': DigiProps<
+			JSX.IntrinsicElements['digi-icon-communication-play-solid']
+		>;
 		'digi-icon-compress-alt': DigiProps<JSX.IntrinsicElements['digi-icon-compress-alt']>;
 		'digi-icon-comunication-case': DigiProps<JSX.IntrinsicElements['digi-icon-comunication-case']>;
 		'digi-icon-comunication-flag': DigiProps<JSX.IntrinsicElements['digi-icon-comunication-flag']>;
-		'digi-icon-comunication-graduate': DigiProps<JSX.IntrinsicElements['digi-icon-comunication-graduate']>;
+		'digi-icon-comunication-graduate': DigiProps<
+			JSX.IntrinsicElements['digi-icon-comunication-graduate']
+		>;
 		'digi-icon-comunication-play': DigiProps<JSX.IntrinsicElements['digi-icon-comunication-play']>;
 		'digi-icon-cooperation': DigiProps<JSX.IntrinsicElements['digi-icon-cooperation']>;
 		'digi-icon-copy': DigiProps<JSX.IntrinsicElements['digi-icon-copy']>;
@@ -118,10 +140,18 @@ declare module 'svelte/elements' {
 		'digi-icon-ellipsis': DigiProps<JSX.IntrinsicElements['digi-icon-ellipsis']>;
 		'digi-icon-envelope': DigiProps<JSX.IntrinsicElements['digi-icon-envelope']>;
 		'digi-icon-envelope-filled': DigiProps<JSX.IntrinsicElements['digi-icon-envelope-filled']>;
-		'digi-icon-exclamation-circle-filled': DigiProps<JSX.IntrinsicElements['digi-icon-exclamation-circle-filled']>;
-		'digi-icon-exclamation-triangle': DigiProps<JSX.IntrinsicElements['digi-icon-exclamation-triangle']>;
-		'digi-icon-exclamation-triangle-filled': DigiProps<JSX.IntrinsicElements['digi-icon-exclamation-triangle-filled']>;
-		'digi-icon-exclamation-triangle-warning': DigiProps<JSX.IntrinsicElements['digi-icon-exclamation-triangle-warning']>;
+		'digi-icon-exclamation-circle-filled': DigiProps<
+			JSX.IntrinsicElements['digi-icon-exclamation-circle-filled']
+		>;
+		'digi-icon-exclamation-triangle': DigiProps<
+			JSX.IntrinsicElements['digi-icon-exclamation-triangle']
+		>;
+		'digi-icon-exclamation-triangle-filled': DigiProps<
+			JSX.IntrinsicElements['digi-icon-exclamation-triangle-filled']
+		>;
+		'digi-icon-exclamation-triangle-warning': DigiProps<
+			JSX.IntrinsicElements['digi-icon-exclamation-triangle-warning']
+		>;
 		'digi-icon-expand-alt': DigiProps<JSX.IntrinsicElements['digi-icon-expand-alt']>;
 		'digi-icon-external-link-alt': DigiProps<JSX.IntrinsicElements['digi-icon-external-link-alt']>;
 		'digi-icon-eye': DigiProps<JSX.IntrinsicElements['digi-icon-eye']>;
@@ -151,7 +181,9 @@ declare module 'svelte/elements' {
 		'digi-icon-home': DigiProps<JSX.IntrinsicElements['digi-icon-home']>;
 		'digi-icon-image': DigiProps<JSX.IntrinsicElements['digi-icon-image']>;
 		'digi-icon-info-circle-solid': DigiProps<JSX.IntrinsicElements['digi-icon-info-circle-solid']>;
-		'digi-icon-input-select-marker': DigiProps<JSX.IntrinsicElements['digi-icon-input-select-marker']>;
+		'digi-icon-input-select-marker': DigiProps<
+			JSX.IntrinsicElements['digi-icon-input-select-marker']
+		>;
 		'digi-icon-instagram': DigiProps<JSX.IntrinsicElements['digi-icon-instagram']>;
 		'digi-icon-job-suggestion': DigiProps<JSX.IntrinsicElements['digi-icon-job-suggestion']>;
 		'digi-icon-language': DigiProps<JSX.IntrinsicElements['digi-icon-language']>;
@@ -160,7 +192,9 @@ declare module 'svelte/elements' {
 		'digi-icon-lattlast': DigiProps<JSX.IntrinsicElements['digi-icon-lattlast']>;
 		'digi-icon-licence-bus': DigiProps<JSX.IntrinsicElements['digi-icon-licence-bus']>;
 		'digi-icon-licence-car': DigiProps<JSX.IntrinsicElements['digi-icon-licence-car']>;
-		'digi-icon-licence-motorcycle': DigiProps<JSX.IntrinsicElements['digi-icon-licence-motorcycle']>;
+		'digi-icon-licence-motorcycle': DigiProps<
+			JSX.IntrinsicElements['digi-icon-licence-motorcycle']
+		>;
 		'digi-icon-licence-truck': DigiProps<JSX.IntrinsicElements['digi-icon-licence-truck']>;
 		'digi-icon-lightbulb': DigiProps<JSX.IntrinsicElements['digi-icon-lightbulb']>;
 		'digi-icon-linkedin-in': DigiProps<JSX.IntrinsicElements['digi-icon-linkedin-in']>;
@@ -175,11 +209,19 @@ declare module 'svelte/elements' {
 		'digi-icon-minus': DigiProps<JSX.IntrinsicElements['digi-icon-minus']>;
 		'digi-icon-move': DigiProps<JSX.IntrinsicElements['digi-icon-move']>;
 		'digi-icon-news': DigiProps<JSX.IntrinsicElements['digi-icon-news']>;
-		'digi-icon-notification-error': DigiProps<JSX.IntrinsicElements['digi-icon-notification-error']>;
+		'digi-icon-notification-error': DigiProps<
+			JSX.IntrinsicElements['digi-icon-notification-error']
+		>;
 		'digi-icon-notification-info': DigiProps<JSX.IntrinsicElements['digi-icon-notification-info']>;
-		'digi-icon-notification-succes': DigiProps<JSX.IntrinsicElements['digi-icon-notification-succes']>;
-		'digi-icon-notification-warning': DigiProps<JSX.IntrinsicElements['digi-icon-notification-warning']>;
-		'digi-icon-online-computervideo': DigiProps<JSX.IntrinsicElements['digi-icon-online-computervideo']>;
+		'digi-icon-notification-succes': DigiProps<
+			JSX.IntrinsicElements['digi-icon-notification-succes']
+		>;
+		'digi-icon-notification-warning': DigiProps<
+			JSX.IntrinsicElements['digi-icon-notification-warning']
+		>;
+		'digi-icon-online-computervideo': DigiProps<
+			JSX.IntrinsicElements['digi-icon-online-computervideo']
+		>;
 		'digi-icon-online-interview': DigiProps<JSX.IntrinsicElements['digi-icon-online-interview']>;
 		'digi-icon-online-meeting': DigiProps<JSX.IntrinsicElements['digi-icon-online-meeting']>;
 		'digi-icon-online-task': DigiProps<JSX.IntrinsicElements['digi-icon-online-task']>;
@@ -234,8 +276,12 @@ declare module 'svelte/elements' {
 		'digi-icon-user-edit': DigiProps<JSX.IntrinsicElements['digi-icon-user-edit']>;
 		'digi-icon-users-solid': DigiProps<JSX.IntrinsicElements['digi-icon-users-solid']>;
 		'digi-icon-validation-error': DigiProps<JSX.IntrinsicElements['digi-icon-validation-error']>;
-		'digi-icon-validation-success': DigiProps<JSX.IntrinsicElements['digi-icon-validation-success']>;
-		'digi-icon-validation-warning': DigiProps<JSX.IntrinsicElements['digi-icon-validation-warning']>;
+		'digi-icon-validation-success': DigiProps<
+			JSX.IntrinsicElements['digi-icon-validation-success']
+		>;
+		'digi-icon-validation-warning': DigiProps<
+			JSX.IntrinsicElements['digi-icon-validation-warning']
+		>;
 		'digi-icon-videocamera': DigiProps<JSX.IntrinsicElements['digi-icon-videocamera']>;
 		'digi-icon-videocamera-off': DigiProps<JSX.IntrinsicElements['digi-icon-videocamera-off']>;
 		'digi-icon-volume': DigiProps<JSX.IntrinsicElements['digi-icon-volume']>;
@@ -252,7 +298,9 @@ declare module 'svelte/elements' {
 		'digi-icon-youtube': DigiProps<JSX.IntrinsicElements['digi-icon-youtube']>;
 		'digi-info-card': DigiProps<JSX.IntrinsicElements['digi-info-card']>;
 		'digi-info-card-multi': DigiProps<JSX.IntrinsicElements['digi-info-card-multi']>;
-		'digi-info-card-multi-container': DigiProps<JSX.IntrinsicElements['digi-info-card-multi-container']>;
+		'digi-info-card-multi-container': DigiProps<
+			JSX.IntrinsicElements['digi-info-card-multi-container']
+		>;
 		'digi-layout-block': DigiProps<JSX.IntrinsicElements['digi-layout-block']>;
 		'digi-layout-columns': DigiProps<JSX.IntrinsicElements['digi-layout-columns']>;
 		'digi-layout-container': DigiProps<JSX.IntrinsicElements['digi-layout-container']>;
@@ -270,11 +318,19 @@ declare module 'svelte/elements' {
 		'digi-navigation-breadcrumbs': DigiProps<JSX.IntrinsicElements['digi-navigation-breadcrumbs']>;
 		'digi-navigation-pagination': DigiProps<JSX.IntrinsicElements['digi-navigation-pagination']>;
 		'digi-navigation-sidebar': DigiProps<JSX.IntrinsicElements['digi-navigation-sidebar']>;
-		'digi-navigation-sidebar-button': DigiProps<JSX.IntrinsicElements['digi-navigation-sidebar-button']>;
-		'digi-navigation-vertical-menu': DigiProps<JSX.IntrinsicElements['digi-navigation-vertical-menu']>;
-		'digi-navigation-vertical-menu-item': DigiProps<JSX.IntrinsicElements['digi-navigation-vertical-menu-item']>;
+		'digi-navigation-sidebar-button': DigiProps<
+			JSX.IntrinsicElements['digi-navigation-sidebar-button']
+		>;
+		'digi-navigation-vertical-menu': DigiProps<
+			JSX.IntrinsicElements['digi-navigation-vertical-menu']
+		>;
+		'digi-navigation-vertical-menu-item': DigiProps<
+			JSX.IntrinsicElements['digi-navigation-vertical-menu-item']
+		>;
 		'digi-notification-alert': DigiProps<JSX.IntrinsicElements['digi-notification-alert']>;
-		'digi-notification-error-page': DigiProps<JSX.IntrinsicElements['digi-notification-error-page']>;
+		'digi-notification-error-page': DigiProps<
+			JSX.IntrinsicElements['digi-notification-error-page']
+		>;
 		'digi-progress-circle': DigiProps<JSX.IntrinsicElements['digi-progress-circle']>;
 		'digi-progress-indicator': DigiProps<JSX.IntrinsicElements['digi-progress-indicator']>;
 		'digi-progress-list': DigiProps<JSX.IntrinsicElements['digi-progress-list']>;
@@ -291,14 +347,24 @@ declare module 'svelte/elements' {
 		'digi-tools-feedback-rating': DigiProps<JSX.IntrinsicElements['digi-tools-feedback-rating']>;
 		'digi-tools-theme-provider': DigiProps<JSX.IntrinsicElements['digi-tools-theme-provider']>;
 		'digi-typography': DigiProps<JSX.IntrinsicElements['digi-typography']>;
-		'digi-typography-heading-jumbo': DigiProps<JSX.IntrinsicElements['digi-typography-heading-jumbo']>;
+		'digi-typography-heading-jumbo': DigiProps<
+			JSX.IntrinsicElements['digi-typography-heading-jumbo']
+		>;
 		'digi-typography-meta': DigiProps<JSX.IntrinsicElements['digi-typography-meta']>;
 		'digi-typography-preamble': DigiProps<JSX.IntrinsicElements['digi-typography-preamble']>;
 		'digi-typography-time': DigiProps<JSX.IntrinsicElements['digi-typography-time']>;
-		'digi-util-breakpoint-observer': DigiProps<JSX.IntrinsicElements['digi-util-breakpoint-observer']>;
-		'digi-util-detect-click-outside': DigiProps<JSX.IntrinsicElements['digi-util-detect-click-outside']>;
-		'digi-util-detect-focus-outside': DigiProps<JSX.IntrinsicElements['digi-util-detect-focus-outside']>;
-		'digi-util-intersection-observer': DigiProps<JSX.IntrinsicElements['digi-util-intersection-observer']>;
+		'digi-util-breakpoint-observer': DigiProps<
+			JSX.IntrinsicElements['digi-util-breakpoint-observer']
+		>;
+		'digi-util-detect-click-outside': DigiProps<
+			JSX.IntrinsicElements['digi-util-detect-click-outside']
+		>;
+		'digi-util-detect-focus-outside': DigiProps<
+			JSX.IntrinsicElements['digi-util-detect-focus-outside']
+		>;
+		'digi-util-intersection-observer': DigiProps<
+			JSX.IntrinsicElements['digi-util-intersection-observer']
+		>;
 		'digi-util-keydown-handler': DigiProps<JSX.IntrinsicElements['digi-util-keydown-handler']>;
 		'digi-util-keyup-handler': DigiProps<JSX.IntrinsicElements['digi-util-keyup-handler']>;
 		'digi-util-mutation-observer': DigiProps<JSX.IntrinsicElements['digi-util-mutation-observer']>;

@@ -14,7 +14,7 @@
 
 <p>Lite text o grejer</p>
 
-<digi-button onafOnClick={toggleMode}> Toggla tema </digi-button>
+<digi-button onafOnClick={toggleMode}>Toggla tema</digi-button>
 
 <digi-typography>
 	<div class="grid min-h-dvh grid-rows-[auto_1fr_auto]">

@@ -26,8 +26,7 @@
 			af-button-text="Knapptext"
 			af-value={data.query}
 			onafOnSubmitSearch={handleSubmitSearch}
-		>
-		</digi-form-input-search>
+		></digi-form-input-search>
 	</div>
 </digi-layout-block>
 <digi-layout-block af-vertical-padding={true} af-variation="secondary">
@@ -36,7 +35,8 @@
 	{/if}
 	{#if data.jobs.length > 0}
 		<p class="py-4 text-(--digi--typography--heading-2--font-size--desktop)">
-			Visar <strong>{data.jobs.length} jobb</strong> av {data.total} totalt
+			Visar <strong>{data.jobs.length} jobb</strong>
+			av {data.total} totalt
 		</p>
 	{/if}
 
@@ -48,9 +48,9 @@
 					<p>{job.workplace_address.municipality} | {job.occupation_group.label}</p>
 					<p>
 						{job.employer.name} | {#if job.application_details.url}
-							<digi-link-external af-href={job.application_details.url} af-target="_blank"
-								>Ansök på {job.employer.name}</digi-link-external
-							>
+							<digi-link-external af-href={job.application_details.url} af-target="_blank">
+								Ansök på {job.employer.name}
+							</digi-link-external>
 						{/if}
 					</p>
 					<digi-expandable-accordion af-heading="Beskrivning">
