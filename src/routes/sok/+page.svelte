@@ -1,13 +1,14 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { SITE_NAME } from '$lib/constants/index.js';
+	import { resolve } from '$app/paths';
 
 	let { data } = $props();
 
 	function handleSubmitSearch(event: CustomEvent) {
 		const searchTerm = event.detail;
 		const params = new URLSearchParams({ q: searchTerm });
-		goto(`?${params}`);
+		goto(resolve(`?${params}`, {}));
 	}
 </script>
 
@@ -20,16 +21,19 @@
 	<digi-typography-heading-jumbo af-text="Sök jobb"></digi-typography-heading-jumbo>
 
 	<div class="grid grid-cols-12 gap-4">
-		<digi-form-input-search
-			af-label="Fritextsökning"
-			af-variation="medium"
-			af-type="search"
-			af-button-text="Knapptext"
-			af-value={data.query}
-			onafOnSubmitSearch={handleSubmitSearch}
-		></digi-form-input-search>
+		<div class="col-span-12 md:col-span-8">
+			<digi-form-input-search
+				af-label="Fritextsökning"
+				af-variation="medium"
+				af-type="search"
+				af-button-text="Knapptext"
+				af-value={data.query}
+				onafOnSubmitSearch={handleSubmitSearch}
+			></digi-form-input-search>
+		</div>
 	</div>
 </digi-layout-block>
+
 <digi-layout-block af-vertical-padding={true} af-variation="secondary">
 	{#if data.jobs.length === 0 && data.query}
 		<p class="py-4">Inga jobb hittades</p>
@@ -42,7 +46,7 @@
 	{/if}
 
 	<div class="result grid grid-cols-12 gap-4">
-		<div class="col-span-8 flex flex-col gap-4">
+		<div class="col-span-12 flex flex-col gap-4 md:col-span-8">
 			{#each data.jobs as job (job.id)}
 				<div class="bg-white p-6">
 					<h2 class="mb-(--digi--padding--smaller)">{job.headline}</h2>

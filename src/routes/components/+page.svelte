@@ -34,5 +34,8 @@
 
 	<digi-layout-block af-vertical-padding={true}>
 		<digi-typography-heading-jumbo af-text="Komponenter"></digi-typography-heading-jumbo>
+		<digi-typography-preamble>
+			Testar att ta fram nya komponenter baserat på Digi
+		</digi-typography-preamble>
 	</digi-layout-block>
 </section>
