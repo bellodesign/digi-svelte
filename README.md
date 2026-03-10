@@ -35,7 +35,7 @@ Digi-komponenterna är byggda med Stencil.js som web components. Integrationen f
 - Sämre SEO och initialladdningstid (blank sida tills JS laddats)
 - `prerender = true` genererar statisk HTML men innehållet renderas fortfarande i webbläsaren
 
-Stencil stödjer inte SSR/hydration utan specialhantering. Det är Digi-teamets ansvar att lösa.
+Stencil stödjer inte SSR/hydration utan specialhantering.
 
 ### 2. Events är dubbelwrappade
 
@@ -74,11 +74,11 @@ Det fungerar, men är mer verbost och känsligare för event-strukturen ovan.
 
 HTML-attribut är strängar. Komplexa typer som `Date` och `Date[]` kräver property-assignment, inte `setAttribute`. Det finns tre alternativ — med olika avvägningar:
 
-| Approach | TypeScript | Runtime |
-|---|---|---|
-| `af-min-date={date}` (kebab) | OK (finns i typen) | Fel — `setAttribute` stringifierar till `"[object Object]"` |
-| `afMinDate={date}` (camelCase) | TS-fel (`does not exist in type`) | OK |
-| `bind:this` + `$effect` | OK | OK |
+| Approach                       | TypeScript                        | Runtime                                                     |
+| ------------------------------ | --------------------------------- | ----------------------------------------------------------- |
+| `af-min-date={date}` (kebab)   | OK (finns i typen)                | Fel — `setAttribute` stringifierar till `"[object Object]"` |
+| `afMinDate={date}` (camelCase) | TS-fel (`does not exist in type`) | OK                                                          |
+| `bind:this` + `$effect`        | OK                                | OK                                                          |
 
 Svelte 5 avgör setAttribute vs property-assignment med `prop in element`. Kebab-case (`af-min-date`) finns inte som JS-property → `setAttribute` anropas → stringifiering. CamelCase (`afMinDate`) finns som getter/setter på Stencil-elementet → property-assignment fungerar korrekt.
 
@@ -92,11 +92,11 @@ Svelte 5 avgör setAttribute vs property-assignment med `prop in element`. Kebab
 
 ```svelte
 <script>
-  let datepickerEl = $state<HTMLElement | null>(null);
-  $effect(() => {
-    if (!datepickerEl) return;
-    (datepickerEl as HTMLElement & { afMinDate: Date }).afMinDate = new Date();
-  });
+	let datepickerEl = $state<HTMLElement | null>(null);
+	$effect(() => {
+		if (!datepickerEl) return;
+		(datepickerEl as HTMLElement & { afMinDate: Date }).afMinDate = new Date();
+	});
 </script>
 
 <digi-calendar-datepicker bind:this={datepickerEl} />
@@ -119,14 +119,14 @@ Genererade typer i `src/digi-elements.d.ts` löser TS-feltypningarna men:
 
 ### Sammanfattning
 
-| Problem | Svårighetsgrad | Status |
-|---|---|---|
-| SSR-stöd saknas | Hög | Workaround (`ssr = false`) |
-| Dubbelwrappade events | Medium | Manuell hantering, se `/form` |
-| Ingen `bind:` | Låg–Medium | Manuell hantering |
-| Objekt/array-props | Låg | Fungerar via Svelte 5 property-binding |
-| Shadow DOM / CSS | Låg | Designat för tokens |
-| TS-typ-underhåll | Låg | Script finns |
+| Problem               | Svårighetsgrad | Status                                 |
+| --------------------- | -------------- | -------------------------------------- |
+| SSR-stöd saknas       | Hög            | Workaround (`ssr = false`)             |
+| Dubbelwrappade events | Medium         | Manuell hantering, se `/form`          |
+| Ingen `bind:`         | Låg–Medium     | Manuell hantering                      |
+| Objekt/array-props    | Låg            | Fungerar via Svelte 5 property-binding |
+| Shadow DOM / CSS      | Låg            | Designat för tokens                    |
+| TS-typ-underhåll      | Låg            | Script finns                           |
 
 Det primära bekymret på sikt är **SSR** — allt annat är hanterbara ergonomiproblem.
 
@@ -145,10 +145,10 @@ defineCustomElements();
 
 Stencil registrerar lightweight stubs via `customElements.define()`. Varje stub vet vilket chunk-filnamn som hör till komponenten (`p-*.entry.js`). Chunks laddas in dynamiskt **första gången** browsern stöter på elementet i DOM.
 
-| Resurs | Laddning |
-|---|---|
+| Resurs                           | Laddning                       |
+| -------------------------------- | ------------------------------ |
 | JS (komponentlogik, ~251 chunks) | Lazy — per komponent vid behov |
-| CSS (alla komponenters stilar) | Eager — en fil vid sidladdning |
+| CSS (alla komponenters stilar)   | Eager — en fil vid sidladdning |
 
 ### I development
 
