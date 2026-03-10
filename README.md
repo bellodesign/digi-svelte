@@ -202,10 +202,6 @@ Och uppdatera anropet i `+layout.svelte`:
 defineCustomElements(window, { resourcesUrl: '/digi/' });
 ```
 
-#### Alternativ 3 — CDN
-
-Om Digi-paketet publicerar en CDN-URL kan `resourcesUrl` pekas dit istället. Kontrollera Digi-teamets dokumentation.
-
 ### Verifiera i produktion
 
 Efter `npm run build && npm run preview` — öppna DevTools Network och filtrera på `p-`. Vid navigation till en sida med en Digi-komponent ska en chunk hämtas. Om 404 visas saknas `resourcesUrl`-konfigurationen eller filerna på rätt plats.
