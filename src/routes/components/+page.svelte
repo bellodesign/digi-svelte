@@ -17,8 +17,8 @@
 	>
 		{#snippet breadcrumb()}
 			<digi-navigation-breadcrumbs af-current-page="Nuvarande sida">
-				<a href={resolve('/')}>Start</a>
-				<a href={resolve('/om-sidan/')}>Undersida 1</a>
+				<a href={resolve('/', {})}>Start</a>
+				<a href={resolve('/om-sidan/', {})}>Undersida 1</a>
 			</digi-navigation-breadcrumbs>
 		{/snippet}
 		{#snippet actions()}
