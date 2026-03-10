@@ -3,6 +3,11 @@
 		"*.css": "tailwindcss"
 	},
 	"html.customData": ["./node_modules/@designsystem-se/af/custom-elements.json"],
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"[svelte]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
 	"stylelint.validate": ["css", "tailwindcss"],
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": "explicit",

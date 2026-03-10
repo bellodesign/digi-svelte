@@ -19,8 +19,8 @@ const colorLines = Object.entries(af25)
 		return `\t${twName}: var(${entry.digiCSSVariable});`;
 	});
 
-// web.json → primitive tokens filtered by category
-const byType = (type, item) =>
+// web.json → primitive tokens filtered by global category
+const byGlobalType = (type, item) =>
 	web.filter(
 		(t) =>
 			t.attributes?.category === 'global' &&
@@ -28,24 +28,28 @@ const byType = (type, item) =>
 			(item === undefined || t.attributes?.item === item)
 	);
 
-const spacingLines = byType('spacing')
+// Spacing — no generic alias layer exists, global primitive scale is the right choice
+const spacingLines = byGlobalType('spacing')
 	.sort((a, b) => a.attributes.item.localeCompare(b.attributes.item))
 	.map((t) => `\t--spacing-${t.attributes.item}: var(--${t.name});`);
 
-const radiusLines = byType('border-radius')
-	.sort((a, b) => a.attributes.item.localeCompare(b.attributes.item))
-	.map((t) => `\t--radius-${t.attributes.item}: var(--${t.name});`);
+// Border radius — use the semantic alias layer (category: 'border-radius'), not global primitives
+// Produces: --radius-primary, --radius-button, --radius-input etc. → rounded-primary, rounded-button
+const radiusLines = web
+	.filter((t) => t.attributes?.category === 'border-radius')
+	.sort((a, b) => a.attributes.type.localeCompare(b.attributes.type))
+	.map((t) => `\t--radius-${t.attributes.type}: var(--${t.name});`);
 
-// font-size tokens have their size name in "subitem"
-const textLines = byType('typography', 'font-size')
+// Font sizes — no clean generic alias layer (semantic tokens are component- and platform-split)
+const textLines = byGlobalType('typography', 'font-size')
 	.sort((a, b) => a.attributes.subitem.localeCompare(b.attributes.subitem))
 	.map((t) => `\t--text-${t.attributes.subitem}: var(--${t.name});`);
 
 const sections = [
-	['Colors — semantic tokens from the digi alias layer (AF25)', colorLines],
-	['Spacing', spacingLines],
-	['Border radius', radiusLines],
-	['Font sizes', textLines]
+	['Colors — semantic alias layer (web-AF25.json)', colorLines],
+	['Spacing — global primitive scale (no generic alias layer exists)', spacingLines],
+	['Border radius — semantic alias layer', radiusLines],
+	['Font sizes — global primitive scale (semantic tokens are component- and platform-split)', textLines]
 ];
 
 const body = sections.map(([label, lines]) => `\t/* ${label} */\n${lines.join('\n')}`).join('\n\n');
@@ -58,7 +62,7 @@ ${body}
 }
 `;
 
-const outPath = './src/lib/styles/tailwind-digi-theme.css';
+const outPath = './src/lib/styles/tailwind-digi.css';
 mkdirSync('./src/lib/styles', { recursive: true });
 writeFileSync(outPath, output);
 

@@ -2,7 +2,7 @@
 /* Run `node scripts/generate-tailwind-theme.js` to regenerate after updating digi-styles tokens. */
 
 @theme {
-	/* Colors — semantic tokens from the digi alias layer (AF25) */
+	/* Colors — semantic alias layer (web-AF25.json) */
 	--color-background-brand-primary: var(--digi--color--background--brand-primary);
 	--color-background-interactive-default-input-elements: var(--digi--color--background--interactive--default--input-elements);
 	--color-background-interactive-default-pop-out: var(--digi--color--background--interactive--default--pop-out);
@@ -133,7 +133,7 @@
 	--color-text-primary: var(--digi--color--text--primary);
 	--color-text-secondary: var(--digi--color--text--secondary);
 
-	/* Spacing */
+	/* Spacing — global primitive scale (no generic alias layer exists) */
 	--spacing-base: var(--digi--global--spacing--base);
 	--spacing-large: var(--digi--global--spacing--large);
 	--spacing-larger: var(--digi--global--spacing--larger);
@@ -158,19 +158,18 @@
 	--spacing-smallest-6: var(--digi--global--spacing--smallest-6);
 	--spacing-smallest-7: var(--digi--global--spacing--smallest-7);
 
-	/* Border radius */
-	--radius-base: var(--digi--global--border-radius--base);
-	--radius-large: var(--digi--global--border-radius--large);
-	--radius-larger: var(--digi--global--border-radius--larger);
-	--radius-largest: var(--digi--global--border-radius--largest);
-	--radius-largest-2: var(--digi--global--border-radius--largest-2);
-	--radius-small: var(--digi--global--border-radius--small);
-	--radius-smaller: var(--digi--global--border-radius--smaller);
-	--radius-smallest: var(--digi--global--border-radius--smallest);
-	--radius-smallest-2: var(--digi--global--border-radius--smallest-2);
-	--radius-smallest-3: var(--digi--global--border-radius--smallest-3);
+	/* Border radius — semantic alias layer */
+	--radius-button: var(--digi--border-radius--button);
+	--radius-complementary-1: var(--digi--border-radius--complementary-1);
+	--radius-complementary-2: var(--digi--border-radius--complementary-2);
+	--radius-complementary-3: var(--digi--border-radius--complementary-3);
+	--radius-input: var(--digi--border-radius--input);
+	--radius-input-search: var(--digi--border-radius--input-search);
+	--radius-primary: var(--digi--border-radius--primary);
+	--radius-secondary: var(--digi--border-radius--secondary);
+	--radius-tertiary: var(--digi--border-radius--tertiary);
 
-	/* Font sizes */
+	/* Font sizes — global primitive scale (semantic tokens are component- and platform-split) */
 	--text-base: var(--digi--global--typography--font-size--base);
 	--text-interaction-large: var(--digi--global--typography--font-size--interaction-large);
 	--text-interaction-medium: var(--digi--global--typography--font-size--interaction-medium);

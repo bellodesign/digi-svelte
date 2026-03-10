@@ -1,10 +1,6 @@
-@import 'tailwindcss';
-
-@plugin '@tailwindcss/typography';
 
 @import '@designsystem-se/af/dist/digi-arbetsformedlingen/digi-arbetsformedlingen.css';
 @import '@designsystem-se/af/dist/digi-arbetsformedlingen/fonts/src/fonts.css';
-@import '$lib/styles/tailwind-digi-theme.css';
 @import '$lib/styles/tailwind.css';
 
 @layer theme {
