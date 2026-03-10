@@ -60,104 +60,106 @@
 		<digi-typography-preamble>
 			Testar digi-formulärkomponenter med validering och Svelte 5.
 		</digi-typography-preamble>
-	</digi-layout-block>
 
-	<digi-layout-block af-vertical-padding={true}>
-		{#if submitted && hasErrors}
-			<digi-form-error-list af-heading="Rätta följande fel">
-				{#if nameError}
-					<a href="#name-input">{nameError}</a>
+		<div class="grid grid-cols-12">
+			<div class="col-span-12 sm:col-span-12 md:col-span-8 lg:col-span-6 flex flex-col gap-largest">
+				{#if submitted && hasErrors}
+					<digi-form-error-list af-heading="Rätta följande fel">
+						{#if nameError}
+							<a href="#name-input">{nameError}</a>
+						{/if}
+						{#if emailError}
+							<a href="#email-input">{emailError}</a>
+						{/if}
+						{#if roleError}
+							<a href="#role-group">{roleError}</a>
+						{/if}
+						{#if dateError}
+							<a href="#date-picker">{dateError}</a>
+						{/if}
+					</digi-form-error-list>
 				{/if}
-				{#if emailError}
-					<a href="#email-input">{emailError}</a>
-				{/if}
-				{#if roleError}
-					<a href="#role-group">{roleError}</a>
-				{/if}
-				{#if dateError}
-					<a href="#date-picker">{dateError}</a>
-				{/if}
-			</digi-form-error-list>
-		{/if}
 
-		<digi-form-input
-			af-id="name-input"
-			af-label="Namn"
-			af-required={true}
-			af-required-text="obligatoriskt"
-			af-value={name}
-			af-validation={nameError ? 'error' : undefined}
-			af-validation-text={nameError ?? undefined}
-			onafOnInput={(e) => {
-				name = ((e as CustomEvent).detail as InputEvent)?.target
-					? (((e as CustomEvent).detail as InputEvent).target as HTMLInputElement).value
-					: '';
-			}}
-		></digi-form-input>
+				<digi-form-input
+					af-id="name-input"
+					af-label="Namn"
+					af-required={true}
+					af-required-text="obligatoriskt"
+					af-value={name}
+					af-validation={nameError ? 'error' : undefined}
+					af-validation-text={nameError ?? undefined}
+					onafOnInput={(e) => {
+						name = ((e as CustomEvent).detail as InputEvent)?.target
+							? (((e as CustomEvent).detail as InputEvent).target as HTMLInputElement).value
+							: '';
+					}}
+				></digi-form-input>
 
-		<digi-form-input
-			af-id="email-input"
-			af-label="E-post"
-			af-type="email"
-			af-required={true}
-			af-required-text="obligatoriskt"
-			af-value={email}
-			af-validation={emailError ? 'error' : undefined}
-			af-validation-text={emailError ?? undefined}
-			onafOnInput={(e) => {
-				email = ((e as CustomEvent).detail as InputEvent)?.target
-					? (((e as CustomEvent).detail as InputEvent).target as HTMLInputElement).value
-					: '';
-			}}
-		></digi-form-input>
+				<digi-form-input
+					af-id="email-input"
+					af-label="E-post"
+					af-type="email"
+					af-required={true}
+					af-required-text="obligatoriskt"
+					af-value={email}
+					af-validation={emailError ? 'error' : undefined}
+					af-validation-text={emailError ?? undefined}
+					onafOnInput={(e) => {
+						email = ((e as CustomEvent).detail as InputEvent)?.target
+							? (((e as CustomEvent).detail as InputEvent).target as HTMLInputElement).value
+							: '';
+					}}
+				></digi-form-input>
 
-		<digi-form-fieldset af-id="role-group" af-legend="Roll">
-			<digi-form-radiogroup
-				af-name="role"
-				af-value={role}
-				onafOnGroupChange={(e) => {
-					role = (e.currentTarget as HTMLElement & { value: string }).value;
-				}}
-			>
-				<digi-form-radiobutton
-					af-label="Konsult"
-					af-value="Konsult"
-					af-validation={roleError ? 'error' : undefined}
-				></digi-form-radiobutton>
-				<digi-form-radiobutton
-					af-label="Anställd"
-					af-value="Anställd"
-					af-validation={roleError ? 'error' : undefined}
-				></digi-form-radiobutton>
-			</digi-form-radiogroup>
-			{#if roleError}
-				<p style="color: var(--digi--color--text--error)">{roleError}</p>
-			{/if}
-		</digi-form-fieldset>
+				<digi-form-fieldset af-id="role-group" af-legend="Roll">
+					<digi-form-radiogroup
+						af-name="role"
+						af-value={role}
+						onafOnGroupChange={(e) => {
+							role = (e.currentTarget as HTMLElement & { value: string }).value;
+						}}
+					>
+						<digi-form-radiobutton
+							af-label="Konsult"
+							af-value="Konsult"
+							af-validation={roleError ? 'error' : undefined}
+						></digi-form-radiobutton>
+						<digi-form-radiobutton
+							af-label="Anställd"
+							af-value="Anställd"
+							af-validation={roleError ? 'error' : undefined}
+						></digi-form-radiobutton>
+					</digi-form-radiogroup>
+					{#if roleError}
+						<p style="color: var(--digi--color--text--error)">{roleError}</p>
+					{/if}
+				</digi-form-fieldset>
 
-		<digi-calendar-datepicker
-			af-id="date-picker"
-			af-label="Datum"
-			af-required={true}
-			af-required-text="obligatoriskt"
-			af-close-on-select={true}
-			af-open-calendar-aria-label="Öppna kalender"
-			af-close-calendar-aria-label="Stäng kalender"
-			af-validation={dateError ? 'error' : undefined}
-			af-validation-text={dateError ?? undefined}
-			bind:this={datepickerEl}
-			onafOnDateChange={(e) => {
-				selectedDates = (e as CustomEvent<Date[]>).detail ?? [];
-			}}
-		></digi-calendar-datepicker>
+				<digi-calendar-datepicker
+					af-id="date-picker"
+					af-label="Datum"
+					af-required={true}
+					af-required-text="obligatoriskt"
+					af-close-on-select={true}
+					af-open-calendar-aria-label="Öppna kalender"
+					af-close-calendar-aria-label="Stäng kalender"
+					af-validation={dateError ? 'error' : undefined}
+					af-validation-text={dateError ?? undefined}
+					bind:this={datepickerEl}
+					onafOnDateChange={(e) => {
+						selectedDates = (e as CustomEvent<Date[]>).detail ?? [];
+					}}
+				></digi-calendar-datepicker>
 
-		<div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
-			<digi-button af-variation="primary" af-type="button" onafOnClick={handleSubmit}>
-				Skicka in
-			</digi-button>
-			<digi-button af-variation="secondary" af-type="button" onafOnClick={handleReset}>
-				Avbryt
-			</digi-button>
+				<div class="flex gap-large mt-larger">
+					<digi-button af-variation="secondary" af-type="button" onafOnClick={handleReset}>
+						Avbryt
+					</digi-button>
+					<digi-button af-variation="primary" af-type="button" onafOnClick={handleSubmit}>
+						Skicka in
+					</digi-button>
+				</div>
+			</div>
 		</div>
 	</digi-layout-block>
 

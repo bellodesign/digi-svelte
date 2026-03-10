@@ -61,13 +61,11 @@
 			saknar i dag en officiell brygga.
 		</p>
 		<p>
-			Idén är att leverera en valfri <code>@theme</code>
+			Idén är att man skulle kunna leverera en <code>@theme</code>
 			-fil i npm-paketet som mappar digi-styles tokens till Tailwind v4-klasser. Team väljer själva att
-			importera den — team som inte använder Tailwind påverkas inte.
+			importera den, team som inte använder Tailwind påverkas inte.
 		</p>
-	</digi-layout-block>
 
-	<digi-layout-block af-vertical-padding={true}>
 		<h2>2. Hur bryggan fungerar</h2>
 		<p>
 			Filen är en ren CSS-brygga utan hårdkodade värden. Varje token pekar tillbaka på sin
@@ -91,9 +89,7 @@
 			om digi-styles uppdaterar ett tokenvärde uppdateras alla Tailwind-klasser som bygger på det automatiskt.
 			Den enda källan till sanning bevaras.
 		</p>
-	</digi-layout-block>
 
-	<digi-layout-block af-vertical-padding={true}>
 		<h2>3. Tokenurval via JSON-taggar</h2>
 		<p>
 			Alla tokens i <code>web-AF25.json</code>
@@ -118,9 +114,7 @@
 			<li>Självdokumenterande — taggen signalerar avsikt för framtida förvaltare</li>
 			<li>En tumregel: tagga en token om en utvecklare skulle använda den som fristående klass</li>
 		</ul>
-	</digi-layout-block>
 
-	<digi-layout-block af-vertical-padding={true}>
 		<h2>4. Tokennamn i Tailwind</h2>
 		<p>
 			Det finns en avvägning mellan att behålla exakt samma namn som i designsystemets dokumentation
@@ -155,9 +149,7 @@
 			i kodbasen, söka i dokumentationen och inte hitta det. Motverka detta med tydlig dokumentation av
 			alias, en genererad referenssida och genom att begränsa alias till de vanligast använda tokens.
 		</p>
-	</digi-layout-block>
 
-	<digi-layout-block af-vertical-padding={true}>
 		<h2>5. Genereringsskript</h2>
 		<p>
 			Filen <code>@theme</code>
@@ -175,9 +167,7 @@
 				lockfile-kontroll
 			</li>
 		</ul>
-	</digi-layout-block>
 
-	<digi-layout-block af-vertical-padding={true}>
 		<h2>6. Tailwind v4 som beroende</h2>
 		<p>
 			<code>@theme</code>
@@ -191,9 +181,7 @@
 			<li>Dokumentera detta tydligt i README</li>
 			<li>Överväga att lägga till ett tydligt felmeddelande vid användning med v3</li>
 		</ul>
-	</digi-layout-block>
 
-	<digi-layout-block af-vertical-padding={true}>
 		<h2>7. Sammanfattning och nästa steg</h2>
 		<h3>Vad som ska byggas</h3>
 		<ul>
@@ -231,5 +219,5 @@
 <style>
 	ul > li {
 		list-style: disc;
-	} 
+	}
 </style>

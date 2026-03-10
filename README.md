@@ -129,3 +129,88 @@ Genererade typer i `src/digi-elements.d.ts` löser TS-feltypningarna men:
 | TS-typ-underhåll | Låg | Script finns |
 
 Det primära bekymret på sikt är **SSR** — allt annat är hanterbara ergonomiproblem.
+
+---
+
+## Stencil lazy loading — hur `defineCustomElements()` fungerar
+
+```ts
+import { defineCustomElements } from '@designsystem-se/af/loader';
+defineCustomElements();
+```
+
+### Vad som händer
+
+`defineCustomElements()` anropar Stencils `bootstrapLazy()` med ett JSON-register över alla ~251 komponenter. Registret innehåller bara **metadata** (komponentnamn, props, events) — ingen komponent-JS laddas in vid anropet.
+
+Stencil registrerar lightweight stubs via `customElements.define()`. Varje stub vet vilket chunk-filnamn som hör till komponenten (`p-*.entry.js`). Chunks laddas in dynamiskt **första gången** browsern stöter på elementet i DOM.
+
+| Resurs | Laddning |
+|---|---|
+| JS (komponentlogik, ~251 chunks) | Lazy — per komponent vid behov |
+| CSS (alla komponenters stilar) | Eager — en fil vid sidladdning |
+
+### I development
+
+Vite servar allt från `node_modules` direkt, så chunk-resolvingen fungerar utan konfiguration. Chunks hämtas från `node_modules/@designsystem-se/af/dist/digi-arbetsformedlingen/p-*.entry.js`.
+
+### I produktion — det som kräver åtgärd
+
+Stencils runtime resolvar chunk-URL:er via `resourcesUrl` (standard: `"./"` relativt `document.baseURI`). Det betyder att `p-*.entry.js`-filerna måste ligga tillgängliga på rätt URL i produktionsmiljön — de kopieras **inte** automatiskt av Vite till build-outputen.
+
+#### Alternativ 1 — Kopiera chunks till `static/`
+
+Kopiera hela Stencil-dist till `static/digi/` så att filerna servas som statiska tillgångar:
+
+```sh
+cp node_modules/@designsystem-se/af/dist/digi-arbetsformedlingen/p-*.entry.js static/digi/
+```
+
+Konfigurera sedan `resourcesUrl` så Stencil vet var den ska leta:
+
+```ts
+defineCustomElements(window, { resourcesUrl: '/digi/' });
+```
+
+#### Alternativ 2 — Automatisera med `vite-plugin-static-copy`
+
+Installera pluginen:
+
+```sh
+npm install -D vite-plugin-static-copy
+```
+
+Lägg till i `vite.config.ts`:
+
+```ts
+import { viteStaticCopy } from 'vite-plugin-static-copy';
+
+export default defineConfig({
+  plugins: [
+    tailwindcss(),
+    sveltekit(),
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'node_modules/@designsystem-se/af/dist/digi-arbetsformedlingen/p-*.entry.js',
+          dest: 'digi'
+        }
+      ]
+    })
+  ]
+});
+```
+
+Och uppdatera anropet i `+layout.svelte`:
+
+```ts
+defineCustomElements(window, { resourcesUrl: '/digi/' });
+```
+
+#### Alternativ 3 — CDN
+
+Om Digi-paketet publicerar en CDN-URL kan `resourcesUrl` pekas dit istället. Kontrollera Digi-teamets dokumentation.
+
+### Verifiera i produktion
+
+Efter `npm run build && npm run preview` — öppna DevTools Network och filtrera på `p-`. Vid navigation till en sida med en Digi-komponent ska en chunk hämtas. Om 404 visas saknas `resourcesUrl`-konfigurationen eller filerna på rätt plats.

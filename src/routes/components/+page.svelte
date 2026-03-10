@@ -10,7 +10,7 @@
 
 <section>
 	<Hero
-		heading="Hitta ditt nästa jobb"
+		heading="Hitta ditt nästa jobb (Hero.svelte)"
 		preamble="Vi hjälper dig att hitta rätt jobb, utbildning eller stöd – oavsett var du befinner dig i arbetslivet."
 		imageSrc="/images/hero-example.jpg"
 		imageAlt="Hero bild"
