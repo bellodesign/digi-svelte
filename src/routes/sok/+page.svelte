@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { SITE_NAME } from '$lib/constants/index.js';
-	import { resolve } from '$app/paths';
 
 	let { data } = $props();
 
