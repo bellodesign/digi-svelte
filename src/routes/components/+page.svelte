@@ -2,10 +2,11 @@
 	import { resolve } from '$app/paths';
 
 	import Hero from '$lib/components/Hero.svelte';
+	import { SITE_NAME } from '$lib/constants';
 </script>
 
 <svelte:head>
-	<title>Komponenter</title>
+	<title>Komponenter - {SITE_NAME}</title>
 </svelte:head>
 
 <section>

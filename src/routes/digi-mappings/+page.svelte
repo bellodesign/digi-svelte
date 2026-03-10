@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { SITE_NAME } from '$lib/constants';
 	import type { PageData } from './$types';
 	import { SvelteSet } from 'svelte/reactivity';
 
@@ -43,7 +44,7 @@
 </script>
 
 <svelte:head>
-	<title>Digi Mappings</title>
+	<title>Digi Mappings - {SITE_NAME}</title>
 </svelte:head>
 
 <section>

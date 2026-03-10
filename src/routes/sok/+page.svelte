@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { SITE_NAME } from '$lib/constants/index.js';
 
 	let { data } = $props();
 
@@ -11,7 +12,7 @@
 </script>
 
 <svelte:head>
-	<title>Sök</title>
+	<title>Sök - {SITE_NAME}</title>
 	<meta name="description" content="På den här sidan kan man testa sök..." />
 </svelte:head>
 

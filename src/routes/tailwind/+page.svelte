@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { SITE_NAME } from '$lib/constants';
+
 	const themeCode = `/* Genereras av scripts/generate-tailwind-theme.js */
 @theme {
   /* Färger — från web-AF25.json via digiCSSVariable */
@@ -42,7 +44,7 @@
 </script>
 
 <svelte:head>
-	<title>Tailwind + Digi</title>
+	<title>Tailwind + Digi - {SITE_NAME}</title>
 </svelte:head>
 
 <section>

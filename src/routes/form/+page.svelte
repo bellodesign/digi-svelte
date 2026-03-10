@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { SITE_NAME } from '$lib/constants';
+
 	let name = $state('');
 	let email = $state('');
 	let role = $state('');
@@ -51,7 +53,7 @@
 </script>
 
 <svelte:head>
-	<title>Formulärtest</title>
+	<title>Formulärtest - {SITE_NAME}</title>
 </svelte:head>
 
 <section>
@@ -62,7 +64,7 @@
 		</digi-typography-preamble>
 
 		<div class="grid grid-cols-12">
-			<div class="col-span-12 sm:col-span-12 md:col-span-8 lg:col-span-6 flex flex-col gap-largest">
+			<div class="col-span-12 flex flex-col gap-largest sm:col-span-12 md:col-span-8 lg:col-span-6">
 				{#if submitted && hasErrors}
 					<digi-form-error-list af-heading="Rätta följande fel">
 						{#if nameError}
@@ -151,7 +153,7 @@
 					}}
 				></digi-calendar-datepicker>
 
-				<div class="flex gap-large mt-larger">
+				<div class="mt-larger flex gap-large">
 					<digi-button af-variation="secondary" af-type="button" onafOnClick={handleReset}>
 						Avbryt
 					</digi-button>

@@ -1,5 +1,9 @@
+<script>
+	import { SITE_NAME } from '$lib/constants';
+</script>
+
 <svelte:head>
-	<title>Tailwind Demo</title>
+	<title>Tailwind Demo - {SITE_NAME}</title>
 </svelte:head>
 
 <section>

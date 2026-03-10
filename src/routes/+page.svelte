@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>Start - {SITE_NAME}</title>
 	<meta name="description" content={SITE_NAME} />
 </svelte:head>
 
@@ -23,14 +23,13 @@
 	<digi-layout-block af-vertical-padding={true}>
 		<h2>Varför Svelte?</h2>
 		<p>
-			Digi-komponenterna är byggda med Stencil som web components och går att använda i Svelte utan större problem.
+			Digi-komponenterna är byggda med Stencil som web components och går att använda i Svelte utan
+			större problem.
 		</p>
 		<ul>
 			<li>Enklare att rekrytera för och onboarda nya utvecklare på</li>
 			<li>Mindre boilerplate ger snabbare leverans</li>
-			<li>
-				Lägre inlärningströskel jämfört med Angular utan att tappa designsystemets värde
-			</li>
+			<li>Lägre inlärningströskel jämfört med Angular utan att tappa designsystemets värde</li>
 			<li>
 				Web components-arkitekturen i Digi är designad för ramverksoberoende — vi utnyttjar det som
 				det är tänkt
@@ -40,20 +39,21 @@
 		<h3>Tekniskt</h3>
 		<ul>
 			<li>
-				Läs in <code>defineCustomElements()</code> i root <code>+layout.svelte</code>
+				Läs in <code>defineCustomElements()</code>
+				i root
+				<code>+layout.svelte</code>
 			</li>
 			<li>Inaktivera SSR tills Digi har stöd för det</li>
 			<li>Events fungerar med Sveltes syntax direkt (bevisat i denna POC)</li>
 			<li>
-				TypeScript-typer genereras automatiskt från Digi-paketet via skript — inget manuellt underhåll
+				TypeScript-typer genereras automatiskt från Digi-paketet via skript — inget manuellt
+				underhåll
 			</li>
 			<li>
-				Tailwind v4-integration fungerar via <code>@theme</code> med digi-tokens — team som vill
-				använda Tailwind för layout och grid har en klar väg framåt
+				Tailwind v4-integration fungerar via <code>@theme</code>
+				med digi-tokens — team som vill använda Tailwind för layout och grid har en klar väg framåt
 			</li>
-			<li>
-				Formulärkomponenter fungerar med validering och felhantering (bevisat i denna POC)
-			</li>
+			<li>Formulärkomponenter fungerar med validering och felhantering (bevisat i denna POC)</li>
 		</ul>
 
 		<h3>Fördelar</h3>
@@ -69,16 +69,15 @@
 			<li>SSR-begränsningen finns kvar tills vidare</li>
 			<li>Händer det något med Digi-paketet påverkas ni direkt</li>
 			<li>
-				Events från web components har ibland quirks — hanterbara men kräver kännedom om hur
-				Stencil emittar events
+				Events från web components har ibland quirks — hanterbara men kräver kännedom om hur Stencil
+				emittar events
 			</li>
 		</ul>
 	</digi-layout-block>
-
 </section>
 
 <style>
 	ul > li {
 		list-style: disc;
-	} 
+	}
 </style>
