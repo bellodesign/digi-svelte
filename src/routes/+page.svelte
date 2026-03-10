@@ -45,13 +45,11 @@
 			</li>
 			<li>Inaktivera SSR tills Digi har stöd för det</li>
 			<li>Events fungerar med Sveltes syntax direkt (bevisat i denna POC)</li>
+			<li>TypeScript-typer genereras från Digi-paketet via skript, inget manuellt underhåll</li>
 			<li>
-				TypeScript-typer genereras automatiskt från Digi-paketet via skript — inget manuellt
-				underhåll
-			</li>
-			<li>
-				Tailwind v4-integration fungerar via <code>@theme</code>
-				med digi-tokens — team som vill använda Tailwind för layout och grid har en klar väg framåt
+				Tailwind v4-integration fungerar genom att generera <code>@theme</code>
+				med digi-tokens. Team som vill använda Tailwind för layout och grid laddar in den filen i sin
+				applikation
 			</li>
 			<li>Formulärkomponenter fungerar med validering och felhantering (bevisat i denna POC)</li>
 		</ul>
@@ -67,7 +65,6 @@
 		<h3>Risker</h3>
 		<ul>
 			<li>SSR-begränsningen finns kvar tills vidare</li>
-			<li>Händer det något med Digi-paketet påverkas ni direkt</li>
 			<li>
 				Events från web components har ibland quirks — hanterbara men kräver kännedom om hur Stencil
 				emittar events
