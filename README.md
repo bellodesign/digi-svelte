@@ -106,11 +106,7 @@ Svelte 5 avgör setAttribute vs property-assignment med `prop in element`. Kebab
 
 Testat i `src/routes/form/+page.svelte` med `afMinDate` (begränsar valbara datum till idag och framåt).
 
-### 5. Shadow DOM blockerar global CSS
-
-Tailwind-klasser och globala CSS-regler kan inte nå in i Stencil-komponenternas Shadow DOM. Styling sker uteslutande via CSS custom properties — vilket Digi har designat för. Det är en hård begränsning: man kan inte överskriva interna stilar utan att Digi exponerar tokens för det.
-
-### 6. TypeScript-typer kräver underhåll
+### 5. TypeScript-typer kräver underhåll
 
 Genererade typer i `src/digi-elements.d.ts` löser TS-feltypningarna men:
 
