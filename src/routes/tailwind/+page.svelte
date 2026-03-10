@@ -73,7 +73,7 @@
 			Filen är en ren CSS-brygga utan hårdkodade värden. Varje token pekar tillbaka på sin
 			digi-styles CSS-variabel:
 		</p>
-		<digi-code-block af-code={themeCode} af-language="css"></digi-code-block>
+		<digi-code-block af-code={themeCode} af-language="css" class="mb-larger"></digi-code-block>
 		<p>
 			Tailwind v4 läser <code>@theme</code>
 			och genererar utility-klasser automatiskt:
@@ -108,7 +108,11 @@
 			<code>@theme</code>
 			-utdata.
 		</p>
-		<digi-code-block af-code={tokenJsonCode} af-language="javascript"></digi-code-block>
+		<digi-code-block
+			af-code={tokenJsonCode}
+			af-language="javascript"
+			class="mb-larger"
+		></digi-code-block>
 		<h3>Varför detta är rätt tillvägagångssätt</h3>
 		<ul>
 			<li>Designsystemteamet behåller kontroll över vad som exponeras</li>
@@ -136,7 +140,11 @@
 			Ett <code>tailwindAlias</code>
 			-fält i JSON kan generera en förkortad klass vid sidan av den standardiserade.
 		</p>
-		<digi-code-block af-code={aliasCode} af-language="javascript"></digi-code-block>
+		<digi-code-block
+			af-code={aliasCode}
+			af-language="javascript"
+			class="mb-larger"
+		></digi-code-block>
 		<p>
 			Skriptet genererar då båda: <code>bg-background-brand-primary</code>
 			(standard) och
