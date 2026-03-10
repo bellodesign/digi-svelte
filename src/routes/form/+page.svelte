@@ -3,6 +3,16 @@
 	let email = $state('');
 	let role = $state('');
 	let selectedDates = $state<Date[]>([]);
+	// Problem 4-test: komplex prop (Date, Date[]) kan inte passas via attribut.
+	// Kebab-case (af-min-date={date}) stringifieras via setAttribute → "[object Object]" (fungerar ej).
+	// camelCase (afMinDate={date}) sätts som DOM-property → fungerar, men ger TS-fel.
+	// Rätt lösning: bind:this + $effect för fullständig typsäkerhet.
+	const minDate = new Date();
+	let datepickerEl = $state<HTMLElement | null>(null);
+	$effect(() => {
+		if (!datepickerEl) return;
+		(datepickerEl as HTMLElement & { afMinDate: Date }).afMinDate = minDate;
+	});
 	let submitted = $state(false);
 	let result = $state<{ name: string; email: string; role: string; date: string } | null>(null);
 
@@ -135,6 +145,7 @@
 			af-close-calendar-aria-label="Stäng kalender"
 			af-validation={dateError ? 'error' : undefined}
 			af-validation-text={dateError ?? undefined}
+			bind:this={datepickerEl}
 			onafOnDateChange={(e) => {
 				selectedDates = (e as CustomEvent<Date[]>).detail ?? [];
 			}}
