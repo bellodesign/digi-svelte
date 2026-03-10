@@ -121,7 +121,6 @@ Genererade typer i `src/digi-elements.d.ts` löser TS-feltypningarna men:
 | Dubbelwrappade events | Medium         | Manuell hantering, se `/form`          |
 | Ingen `bind:`         | Låg–Medium     | Manuell hantering                      |
 | Objekt/array-props    | Låg            | Fungerar via Svelte 5 property-binding |
-| Shadow DOM / CSS      | Låg            | Designat för tokens                    |
 | TS-typ-underhåll      | Låg            | Script finns                           |
 
 Det primära bekymret på sikt är **SSR** — allt annat är hanterbara ergonomiproblem.
