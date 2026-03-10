@@ -407,10 +407,6 @@
 		color: var(--digi--color--text--description);
 	}
 
-	.small-text {
-		@apply text-sm;
-	}
-
 	.example-line {
 		@apply rounded px-3 py-2 font-mono text-sm;
 		background-color: var(--digi--color--background--secondary);

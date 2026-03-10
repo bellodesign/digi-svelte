@@ -13,7 +13,7 @@
 	<Hero
 		heading="Hitta ditt nästa jobb (Hero.svelte)"
 		preamble="Vi hjälper dig att hitta rätt jobb, utbildning eller stöd – oavsett var du befinner dig i arbetslivet."
-		imageSrc="/images/hero-example.jpg"
+		imageSrc="https://picsum.photos/id/1/360/240"
 		imageAlt="Hero bild"
 	>
 		{#snippet breadcrumb()}
