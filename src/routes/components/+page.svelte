@@ -37,5 +37,6 @@
 		<digi-typography-preamble>
 			Testar att ta fram nya komponenter baserat på Digi
 		</digi-typography-preamble>
+		<p>Sida för att testa av hur det är att bygga komponenter med Digi i Svelte.</p>
 	</digi-layout-block>
 </section>
