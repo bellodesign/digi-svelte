@@ -28,6 +28,17 @@
   }
 }`;
 
+	const backgroundUtilityCode = `/* Bakgrundstokens definieras utanför @theme */
+@layer utilities {
+  .bg-background-primary {
+    background-color: var(--digi--color--background--primary);
+  }
+  .bg-background-brand-primary {
+    background-color: var(--digi--color--background--brand-primary);
+  }
+}
+/* Inga text-background-* eller border-background-* genereras */`;
+
 	const aliasCode = `/* Förslag: tailwindAlias-fält i web-AF25.json */
 {
   "text--primary": {
@@ -158,6 +169,31 @@
 			Om alias används kan en utvecklare se <code>bg-brand</code>
 			i kodbasen, söka i dokumentationen och inte hitta det. Motverka detta med tydlig dokumentation av
 			alias, en genererad referenssida och genom att begränsa alias till de vanligast använda tokens.
+		</p>
+
+		<h3>Problemet med background-tokens och text-klasser</h3>
+		<p>
+			Tailwind v4 genererar automatiskt <em>alla</em> färgutility-klasser (
+			<code>bg-*</code>, <code>text-*</code>, <code>border-*</code> m.fl.) för varje
+			<code>--color-*</code>-variabel i <code>@theme</code>. Det innebär att en bakgrundsfärgstoken
+			som <code>background--primary</code> genererar både <code>bg-background-primary</code> (rimligt)
+			och <code>text-background-primary</code> (semantiskt förvirrande — låter som textfärg).
+		</p>
+		<p>
+			Ett möjligt alternativ för genereringsskriptet: lägg bakgrundstokens utanför
+			<code>@theme</code> och definiera dem istället som explicita utility-klasser via
+			<code>@layer utilities</code>. Då genereras bara <code>bg-*</code>, aldrig
+			<code>text-*</code>:
+		</p>
+		<digi-code-block
+			af-code={backgroundUtilityCode}
+			af-language="css"
+			class="mb-larger"
+		></digi-code-block>
+		<p>
+			Nackdelen är att skriptet behöver skilja på bakgrundstokens och övriga färgtokens, och att
+			dessa klasser inte syns i Tailwinds IntelliSense på samma sätt som <code>@theme</code>-klasser.
+			En avvägning som bör utvärderas.
 		</p>
 
 		<h2>5. Genereringsskript</h2>

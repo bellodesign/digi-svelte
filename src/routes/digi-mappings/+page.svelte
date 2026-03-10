@@ -126,20 +126,6 @@
 			<code>ring-text-primary</code>
 			…
 		</p>
-		<div class="note mb-base flex items-start gap-3">
-			<digi-icon-notification-warning
-				style="--digi--icon--width: 1rem"
-			></digi-icon-notification-warning>
-			<p>
-				En token som
-				<code>background--primary</code>
-				genererar även
-				<code>text-background-primary</code>
-				— semantiskt förvirrande. Alias som
-				<code>bg-default</code>
-				minskar risken för feltolkning och gör koden mer läsbar.
-			</p>
-		</div>
 	</digi-layout-block>
 
 	{#each filteredGroups as group (group.category)}
