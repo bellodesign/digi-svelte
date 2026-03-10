@@ -8,7 +8,7 @@
 	function handleSubmitSearch(event: CustomEvent) {
 		const searchTerm = event.detail;
 		const params = new URLSearchParams({ q: searchTerm });
-		goto(resolve(`?${params}`, {}));
+		goto(`?${params}`);
 	}
 </script>
 
