@@ -31,7 +31,7 @@
 			<li>Mindre boilerplate ger snabbare leverans</li>
 			<li>Lägre inlärningströskel jämfört med Angular utan att tappa designsystemets värde</li>
 			<li>
-				Web components-arkitekturen i Digi är designad för ramverksoberoende — vi utnyttjar det som
+				Web components-arkitekturen i Digi är designad för ramverksoberoende — vi nyttjar det som
 				det är tänkt
 			</li>
 		</ul>
