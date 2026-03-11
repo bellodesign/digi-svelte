@@ -4,8 +4,11 @@
 	// import { ModeWatcher, toggleMode } from 'mode-watcher';
 	import './layout.css';
 
-	import { defineCustomElements } from '@designsystem-se/af/loader';
-	defineCustomElements();
+	import { browser } from '$app/environment';
+
+	if (browser) {
+		import('@designsystem-se/af/loader').then((m) => m.defineCustomElements());
+	}
 
 	let { children } = $props();
 </script>

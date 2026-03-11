@@ -46,7 +46,7 @@
 			<li>Inaktivera SSR tills Digi har stöd för det</li>
 			<li>Events fungerar med Sveltes syntax direkt (bevisat i denna POC)</li>
 			<li>
-				För att få bra stöd för intellisense behövde vi generare dessa från Digi-paketet via skript.
+				För att få bra stöd för intellisense behövde vi generera dessa från Digi-paketet via skript.
 				Förslag att det flyttas till designsystemet i förlängningen.
 			</li>
 			<li>

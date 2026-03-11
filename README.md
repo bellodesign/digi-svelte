@@ -162,17 +162,19 @@ SyntaxError: Named export 'defineCustomElements' not found.
 The requested module is a CommonJS module.
 ```
 
-**Lösning:** Lägg till paketet i `ssr.noExternal` i `vite.config.ts`:
+**Lösning:** Använd en top-level `if (browser)`-check med dynamisk import i `+layout.svelte`:
 
 ```ts
-ssr: {
-  noExternal: ['@designsystem-se/af']
+import { browser } from '$app/environment';
+
+if (browser) {
+  import('@designsystem-se/af/loader').then((m) => m.defineCustomElements());
 }
 ```
 
-Detta tvingar Vite att bundla paketet och hantera CJS→ESM-konverteringen, vilket gör att statiska imports fungerar även server-side.
+Vite tree-shakar bort server-sökvägen vid build, så importen körs aldrig server-side. På klienten körs den direkt vid modulinitiering (innan komponenten mountas) — snabbare än `onMount` och utan flicker.
 
-> **Obs:** Utan den här inställningen måste importen göras dynamiskt inuti `onMount`, vilket orsakar ett fläckigt första render (komponenterna renderar utan layout och uppdateras sedan när JS laddats).
+> **Obs:** `ssr.noExternal` är ett alternativ men orsakar att Stencil-runtimen bundlas dubbelt (en gång i SSR-bundle, en gång i klient-bundle), vilket ger ett `$instanceValues$`-fel i Stencil.
 
 ---
 
