@@ -33,7 +33,8 @@ Digi-komponenterna är byggda med Stencil.js som web components. Integrationen f
 
 - Ingen server-side rendering — sidan är en ren SPA
 - Sämre SEO och initialladdningstid (blank sida tills JS laddats)
-- `prerender = true` genererar statisk HTML men innehållet renderas fortfarande i webbläsaren
+
+`prerender = false` är satt globalt eftersom sidor med dynamiska route-parametrar (t.ex. `/sok?q=...`) inte kan prerendereras.
 
 Stencil stödjer inte SSR/hydration utan specialhantering.
 
@@ -124,6 +125,54 @@ Genererade typer i `src/digi-elements.d.ts` löser TS-feltypningarna men:
 | TS-typ-underhåll      | Låg            | Script finns                           |
 
 Det primära bekymret på sikt är **SSR** — allt annat är hanterbara ergonomiproblem.
+
+---
+
+## Netlify-driftsättning — problem och lösningar
+
+### CORS / Private Network Access — API-anrop blockerades i webbläsaren
+
+**Problem:** `jobsearch.api.jobtechdev.se` resolvar till en privat IP-adress. Moderna webbläsare blockerar anrop från publika sajter till privata adresser (Private Network Access-policy). Felet i konsolen:
+
+```
+Access to fetch at 'https://jobsearch.api.jobtechdev.se/search' blocked by CORS policy:
+Permission was denied for this request to access the `local` address space.
+```
+
+**Orsak:** Söksidans load-funktion låg i `+page.ts` (universal load) — den körs i webbläsaren vid klientnavigering, vilket triggade blockeringen.
+
+**Lösning:** Byt till `+page.server.ts` (server-only load). Anropet sker då via Netlify Functions istället för från webbläsaren.
+
+---
+
+### adapter-static fungerar inte med dynamiska rutter
+
+**Problem:** Projektet använde `@sveltejs/adapter-static`, som kräver att alla sidor kan prerendereras statiskt. `/sok` är dynamisk (beror på söktermen) → build kraschade.
+
+**Lösning:** Byt till `@sveltejs/adapter-netlify` i `svelte.config.js`. Dynamiska rutter hanteras då av Netlify Functions.
+
+---
+
+### `defineCustomElements` kraschade i Netlify Function
+
+**Problem:** Designsystemets loader (`@designsystem-se/af/loader/index.js`) är ett CommonJS-paket. I Netlify Functions (ESM-kontext) fungerar inte named imports:
+
+```
+SyntaxError: Named export 'defineCustomElements' not found.
+The requested module is a CommonJS module.
+```
+
+**Lösning:** Lägg till paketet i `ssr.noExternal` i `vite.config.ts`:
+
+```ts
+ssr: {
+  noExternal: ['@designsystem-se/af']
+}
+```
+
+Detta tvingar Vite att bundla paketet och hantera CJS→ESM-konverteringen, vilket gör att statiska imports fungerar även server-side.
+
+> **Obs:** Utan den här inställningen måste importen göras dynamiskt inuti `onMount`, vilket orsakar ett fläckigt första render (komponenterna renderar utan layout och uppdateras sedan när JS laddats).
 
 ---
 
