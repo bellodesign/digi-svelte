@@ -1,5 +1,13 @@
 # Digi-Svelte
 
+## ⚠️ Temporär demo-konfiguration
+
+Navigationen är begränsad till enbart Tabell-sidan för demo. Återställ dessa filer för att få tillbaka alla routes:
+
+- `src/lib/constants/index.ts` — återställ `NAV_ITEMS` med alla routes
+- `src/routes/+page.ts` — ta bort redirect, återställ `export const prerender = true;`
+- `src/routes/+layout.ts` — ta bort redirect-logiken, behåll bara `ssr = false` och `prerender = false`
+
 ## Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
