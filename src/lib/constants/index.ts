@@ -1,4 +1,4 @@
-export const SITE_NAME = 'Forumet';
+export const SITE_NAME = 'Avtal och uppföljning - Forum';
 
 export const NAV_ITEMS = [
 	{ href: '/', label: 'Start' },

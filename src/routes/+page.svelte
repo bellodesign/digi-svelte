@@ -10,10 +10,10 @@
 <section>
 	<digi-layout-block af-vertical-padding={true}>
 		<digi-typography-heading-jumbo
-			af-text="Arbetsförmedlingens forum"
+			af-text="Avtal och uppföljning - Forum"
 		></digi-typography-heading-jumbo>
 		<digi-typography-preamble>
-			En POC för att utvärdera om vi kan skapa ett eget forum baserat på Svelte.
+			Här kan ni skicka in önskemål, ställa frågor om applikationen eller skapa buggrapporter.
 		</digi-typography-preamble>
 	</digi-layout-block>
 </section>
