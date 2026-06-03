@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { posts } from '$lib/posts.svelte.ts';
 
-	// posts.create({
-	// 	title: 'Cool stuff',
-	// 	author: 'Nelson Mandela',
-	// 	content: 'Lorem ipsum dolor.'
-	// });
+	posts.create({
+		title: 'Cool stuff',
+		author: 'Nelson Mandela',
+		content: 'Lorem ipsum dolor.'
+	});
 </script>
 
 <digi-layout-block>
