@@ -9,10 +9,14 @@
 	let content = $state('');
 	let submitted = $state(false);
 
+	const category = $derived(data.category as Categories);
+
 	const titleError = $derived(submitted && !title.trim() ? 'Titel måste fyllas i' : null);
 	const authorError = $derived(submitted && !author.trim() ? 'Författare måste fyllas i' : null);
 	const contentError = $derived(submitted && !content.trim() ? 'Innehåll måste fyllas i' : null);
 	const hasErrors = $derived(!!(titleError || authorError || contentError));
+
+	const categoryHeading = $derived(Categories[data.category as keyof typeof Categories]);
 
 	function handleSubmit() {
 		submitted = true;
@@ -20,8 +24,6 @@
 		if (hasErrors) {
 			return;
 		}
-
-		const category = data.category as Categories;
 
 		posts.create({ title, author, content, category });
 		title = '';
@@ -37,12 +39,14 @@
 		author = '';
 		content = '';
 		submitted = false;
+
+		goto(`/forum/${category}`);
 	}
 </script>
 
 <section>
 	<digi-layout-block af-vertical-padding={true}>
-		<h1>Nytt inlägg</h1>
+		<h1>Nytt inlägg ({categoryHeading})</h1>
 
 		<div class="grid grid-cols-12">
 			<div class="col-span-12 flex flex-col gap-largest sm:col-span-12 md:col-span-8 lg:col-span-6">
