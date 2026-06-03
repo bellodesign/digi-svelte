@@ -13,10 +13,21 @@ export enum Categories {
 	'backend' = 'Backend'
 }
 
+const STORAGE_KEY = 'forum-posts';
+
 class Posts {
 	#posts: Post[] = $state([]);
 
-	constructor() {}
+	constructor() {
+		if (typeof localStorage === 'undefined') return;
+		const stored = localStorage.getItem(STORAGE_KEY);
+		if (stored) {
+			this.#posts = JSON.parse(stored).map((p: Post) => ({
+				...p,
+				date: new Date(p.date)
+			}));
+		}
+	}
 
 	get getAll() {
 		return this.#posts;
@@ -34,6 +45,7 @@ class Posts {
 		};
 
 		this.#posts.push(payload);
+		localStorage.setItem(STORAGE_KEY, JSON.stringify(this.#posts));
 	}
 }
 
