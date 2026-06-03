@@ -1,10 +1,17 @@
-type Post = {
+export type Post = {
 	id: string;
 	author: string;
 	title: string;
 	content: string;
 	date: Date;
+	category: Categories;
 };
+
+export enum Categories {
+	'UX' = 'ux',
+	'Frontend' = 'frontend',
+	'Backend' = 'backend'
+}
 
 class Posts {
 	#posts: Post[] = $state([]);
@@ -13,6 +20,10 @@ class Posts {
 
 	get getAll() {
 		return this.#posts;
+	}
+
+	getByCategory(category: string) {
+		return this.#posts.filter((post) => post.category === category);
 	}
 
 	create(post: Omit<Post, 'id' | 'date'>) {
