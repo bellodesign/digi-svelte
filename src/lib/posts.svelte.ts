@@ -8,9 +8,9 @@ export type Post = {
 };
 
 export enum Categories {
-	'UX' = 'ux',
-	'Frontend' = 'frontend',
-	'Backend' = 'backend'
+	'ux' = 'UX',
+	'frontend' = 'Frontend',
+	'backend' = 'Backend'
 }
 
 class Posts {

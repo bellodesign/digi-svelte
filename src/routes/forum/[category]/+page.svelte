@@ -1,15 +1,16 @@
 <script lang="ts">
-	import { posts } from '$lib/posts.svelte';
-	import { resolve } from '$app/paths';
+	import { Categories, posts } from '$lib/posts.svelte';
 	import CategoryBadge from '$lib/components/forum/CategoryBadge.svelte';
 
 	let { data } = $props();
+
+	const categoryHeading = $derived(Categories[data.category as keyof typeof Categories]);
 </script>
 
 <digi-layout-block af-vertical-padding={true}>
-	<h1>{data.category}</h1>
+	<h1>{categoryHeading}</h1>
 
-	<a href={resolve(`/forum/form?category=${data.category}`, {})}>Skapa inlägg</a>
+	<a href="/forum/form?category={data.category}">Skapa inlägg</a>
 
 	<div class=" mt-8 flex max-w-150 flex-col gap-4 border-t-2 border-gray-200">
 		{#each posts.getByCategory(data.category) as post (post.id)}

@@ -29,7 +29,7 @@
 		content = '';
 		submitted = false;
 
-		goto('/forum');
+		goto(`/forum/${category}`);
 	}
 
 	function handleReset() {
