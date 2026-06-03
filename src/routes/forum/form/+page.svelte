@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { Categories, posts } from '$lib/posts.svelte';
+	import { Categories, posts, type CategorySlug } from '$lib/posts.svelte';
 
 	let { data } = $props();
 
@@ -16,7 +16,7 @@
 	const contentError = $derived(submitted && !content.trim() ? 'Innehåll måste fyllas i' : null);
 	const hasErrors = $derived(!!(titleError || authorError || contentError));
 
-	const categoryHeading = $derived(Categories[data.category as keyof typeof Categories]);
+	const categoryHeading = $derived(Categories[data.category as CategorySlug]);
 
 	function handleSubmit() {
 		submitted = true;

@@ -4,7 +4,7 @@ export type Post = {
 	title: string;
 	content: string;
 	date: Date;
-	category: Categories;
+	category: CategorySlug;
 };
 
 export enum Categories {
@@ -12,6 +12,9 @@ export enum Categories {
 	'frontend' = 'Frontend',
 	'backend' = 'Backend'
 }
+
+export type CategorySlug = keyof typeof Categories;
+export type CategoryLabel = (typeof Categories)[CategorySlug];
 
 const STORAGE_KEY = 'forum-posts';
 

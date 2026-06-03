@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { Categories, posts } from '$lib/posts.svelte';
+	import { Categories, posts, type CategorySlug } from '$lib/posts.svelte';
 	import CategoryBadge from '$lib/components/forum/CategoryBadge.svelte';
 
 	let { data } = $props();
 
-	const categoryHeading = $derived(Categories[data.category as keyof typeof Categories]);
+	const categoryHeading = $derived(Categories[data.category as CategorySlug]);
 </script>
 
 <digi-layout-block af-vertical-padding={true}>
