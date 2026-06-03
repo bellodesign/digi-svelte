@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { posts } from '$lib/posts.svelte';
 	import { resolve } from '$app/paths';
+	import CategoryBadge from '$lib/components/forum/CategoryBadge.svelte';
 
 	// posts.create({
 	// 	title: 'Cool stuff',
@@ -19,14 +20,16 @@
 		<a href={resolve('/forum/backend', {})}>Backend</a>
 	</p>
 
-	<div class=" mt-8 flex max-w-[600px] flex-col gap-4 border-t-2 border-gray-200">
+	<div class=" mt-8 flex max-w-150 flex-col gap-4 border-t-2 border-gray-200">
 		{#each posts.getAll as post (post.id)}
-			<div data-id={post.id} class="border-b border-gray-300 p-4">
-				<h2 class="text-lg font-semibold">{post.title}</h2>
-				<p>Kategori: {post.category}</p>
+			<article data-id={post.id} class="border-b border-gray-300 p-4">
+				<header class="flex justify-between">
+					<h2 class="text-lg font-semibold">{post.title}</h2>
+					<CategoryBadge text={post.category}></CategoryBadge>
+				</header>
 				<p>{post.content}</p>
 				<small>{post.author}</small>
-			</div>
+			</article>
 		{/each}
 	</div>
 </digi-layout-block>
