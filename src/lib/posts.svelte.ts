@@ -37,6 +37,10 @@ class Posts {
 		return this.#posts.filter((post) => post.category === category);
 	}
 
+	getById(id: string) {
+		return this.#posts.find((post) => post.id === id);
+	}
+
 	create(post: Omit<Post, 'id' | 'date'>) {
 		const payload = {
 			...post,

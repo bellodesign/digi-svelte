@@ -16,7 +16,9 @@
 		{#each posts.getByCategory(data.category) as post (post.id)}
 			<article data-id={post.id} class="border-b border-gray-300 p-4">
 				<header class="flex justify-between">
-					<h2 class="text-lg font-semibold">{post.title}</h2>
+					<h2 class="text-lg font-semibold">
+						<a href="/forum/{post.category}/{post.id}">{post.title}</a>
+					</h2>
 					<CategoryBadge text={post.category}></CategoryBadge>
 				</header>
 				<p>{post.content}</p>
