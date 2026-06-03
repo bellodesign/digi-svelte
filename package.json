@@ -47,6 +47,6 @@
 		"vite": "^7.3.1"
 	},
 	"dependencies": {
-		"@designsystem-se/af": "^35.0.0"
+		"@designsystem-se/af": "^34.0.0"
 	}
 }
